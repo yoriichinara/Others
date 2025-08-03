@@ -1,0 +1,142 @@
+\section{Teoremas de Hahn-Banach}
+
+\begin{proposition}
+    \emph{Lemma de Zorn.} Todo conjunto parcialmente ordenado, no vacío y en el cual todo subconjunto totalmente ordenado tiene cota superior, tiene un elemento máximal. 
+\end{proposition}
+
+\Ei
+
+\begin{exercise}
+    Lemma de Zorn \(\Leftrightarrow \) Axioma de Elección. 
+\end{exercise}
+
+\Ef
+
+%\begin{theorem}
+%    \emph{Hanh-Banach (en \(\R\)).} Sean \(E\) un espacio (sobre \(\R\)) normado y \(p:E\to \R\) una función tal que, 
+%    \begin{itemize}
+%        \item \(\forall a>0,\forall x\in E\) se tiene \(p(ax) = ap(x)\). 
+%        \item \(\forall x,y\in E\) su cumple \(p(x+y) \leq p(x)+p(y)\). 
+%    \end{itemize} 
+%    Sean tambien \(G\leq E \) y \(\varphi : G \to \R\) un operador lineal tal que \(\forall x\in G \text{ se tiene }\varphi(x)\leq p(x)\). Entonces \(\exists \overset{\sim }{\varphi} : E \to \R\) lineal que extiende a \(\varphi\), es decir, \(\overset{\sim }{\varphi}(x)\Big|_{G} = \varphi(x) \) y que además satisface \(\forall x\in E \text{ que }\overset{\sim}{\varphi}(x)\leq p(x)\). 
+%\end{theorem}
+\begin{theorem}
+    \emph{Hanh-Banach (en \(\K\)).} Sean \(E\) un espacio (sobre \(\K\)) normado y \(p:E\to \R\) una función tal que, 
+    \begin{itemize}
+        \item \(\forall a>0,\forall x\in E\) se tiene \(p(ax) = |a|p(x)\). 
+        \item \(\forall x,y\in E\) su cumple \(p(x+y) \leq p(x)+p(y)\). 
+    \end{itemize} 
+    Si \(G\leq E \) y \(\varphi : G \to \K\) es un operador lineal tal que \(\forall x\in G \text{ se tiene }|\varphi(x)|\leq p(x)\), entonces \(\exists \overset{\sim }{\varphi} : E \to \K\) lineal que extiende a \(\varphi\), es decir, \(\overset{\sim }{\varphi}(x)\Big|_{G} = \varphi(x) \) y que además satisface \(\forall x\in E \text{ que }|\overset{\sim}{\varphi}(x)|\leq p(x)\). 
+\end{theorem}
+\begin{note}
+    \emph{Colorario(s).} \begin{itemize}
+        \item Si \(\varphi \) es continuo entonces \(\overset{\sim}{\varphi}\) también y \(\|\varphi\| = \|\overset{\sim}{\varphi}\|\). 
+        \item Si \(E\) es un espacio normado entonces \(\forall x_0\in E \setminus \{0\},\exists \varphi\in E'\) tal que \(\|\varphi\| = 1\) y \(\varphi(x_0) = \|x_0\|\). 
+        \item Si \(E\neq \{0\}\) y \(x\in E \) entonces \(\|x\| = \sup\{ |\varphi(x)|: \varphi \in E' \text{ y } \|x\|\in B_E\} \) cuyo valor alcanza.   
+    \end{itemize}
+\end{note}
+
+\subsection{Versiones Vectoriales del Teorema de Hahn-Banach}
+
+\begin{definition}
+    Sea \(E\) Banach y \(P\in \Li(E,E)\) es una \emph{proyección} sii \(P^2 = P \circ P = P \). 
+\end{definition}
+\begin{note}
+    Si \(P\neq 0\) entonces \(\|P\|\geq 1 \). 
+\end{note}
+\begin{proposition}
+    Sea \(F\leq E\). Entonces son equivalentes \((a)\ \exists P\in \Li(E,E)\) proyección tal que \(P(E) = F   \) e \((b) \ F\ce \leq E \) e \(\exists G\ce \leq E  \) tal que \(E = F\oplus G\). 
+\end{proposition}
+\begin{note}
+    \(F = \{x\in E : P(x) = x\}\) e \(G = \ker(P)\). 
+\end{note}
+\begin{definition}
+    \(F\leq E \) es complementado si satisface alguna \((a)\) o \((b)\). Es \(\lambda\)-complementado si \(\|P\| = \lambda\). 
+\end{definition}
+
+\Ei
+
+\begin{example}
+    Todo \(F\leq E\) con \(\dim (F)<\infty \) es complementado. Hint: Base + $a_j$ + Hahn-Banach.   
+\end{example}
+\begin{example}
+    Siendo \(E\) y \(F\) Banach. La proyección \(E\times F \ni (x,y)\mapsto (x,0) \in E\times \{0\}\) deja ver que \(E\) es $1$-complementado. 
+\end{example}
+\begin{example}
+    SI existen espacios cerrados que son no complementados, créditos a Murray \((\ell_p)\) y Phillips \((\ell_\infty)\). 
+\end{example}
+
+\Ef
+
+\begin{proposition}
+    Sean \(G\) Banach, \(F\leq E \) complementado e \(T \in \Li(F,G)\), entonces \(\exists \overset{\sim}{T} \in \Li(E,G)\). 
+\end{proposition}
+\begin{proposition}
+    Si \(F\leq E\) no complementado, entonces \(\not\exists T\in \Li(E,F), \forall x\in F \) tal que \(T(x) = x \).  
+\end{proposition}
+\begin{note}
+    La identidad no puede ser extendida continuamente a \(E\). 
+\end{note}
+\begin{theorem}
+    \emph{Phillips.} Sean \(F\leq E\) e \(T\in \Li(E,\ell_\infty)\). Entonces \(\exists \overset{\sim}{T}\in \Li(E, \ell_\infty)\), con \(\|\overset{\sim}{T}\| = \|T\|\). 
+\end{theorem}
+\begin{note}
+   \emph{Colorario.}  Si \((\ell_\infty)\ce \leq E\) entonces \(\ell_\infty\) es $1$-complementado en \(E\). 
+\end{note}
+
+\subsection{Aplicaciones de Hahn-Banach a Espacios Separables}
+
+\begin{proposition}
+    Sean \(M\ce \leq E\), \(y_0\in  E\setminus M\) y \(d = \textnormal{dist}(y_o,M)\). Entonces \(\exists \varphi \in E', \forall x\in M\) tal que \( \|\varphi\|=1 \), \(\varphi(y_0) = d\) y \(\varphi(x)=0\). 
+\end{proposition}
+\begin{theorem}
+    Si \(E'\) es separable, entonces \(E\) también. 
+\end{theorem}
+\begin{proposition}
+    \(\forall E\) separable se tiene \(E\cong F\leq \ell_\infty\) isómetricamente.  
+\end{proposition}
+
+\subsection{Formas geométricas del Teorema de Hahn-Banach (\(\K = \R\)) }
+
+\begin{definition}
+    Sea \((V,+,\cdot)\neq \{0\}\). El subespacio \(W< V \) es \emph{hiperplano} sii \(W < W_1< V\) implica \(W_1= V\). 
+\end{definition}
+\begin{proposition}
+    \(W<V\) es hiperplano sii \(\exists \varphi \neq 0: V \to \R \) lineal tal que \(W = \ker(\varphi)\). 
+\end{proposition}
+\begin{note}
+    Si \(H<V\) es un hiperplano entonces \(v_0 + H = \{v\in V: \varphi(v) = \varphi(v_0) = a\in \R\}\) es un \emph{hiperplano afín}. 
+\end{note}
+\begin{proposition}
+    \(H\ce <V\) sii \(\varphi \) es continua. 
+\end{proposition}
+\begin{definition}
+    Sea \(C\ab \ni 0\subseteq E\) convexo. Llamamos \emph{funcional de Minkowski} a la aplicación \(p_C:E\to \R\) que envía \(x\mapsto \inf \left\{a>0: \frac{x}{a} \in C \right\}\). 
+\end{definition}
+\begin{proposition}
+    El funcional de Minkowski verifica \(\forall b>0, \forall x,y\in E\) que:  \((a)\ p_C(bx) = bp_C(x)\); \((b) \ C = \{x\in E : p_C(x)<1\}\); \((c) \ \exists M>0 \text{ tal que } 0\leq p_C(x)\leq M \|x\|\) e \((d)\ p_C(x+y) \leq p_C(x)+p_C(y)\).  
+\end{proposition}
+\begin{proposition}
+    Sean \(\emptyset \neq C\ab \subset E \) conexo e \(x_0\in E\setminus C\), entonces \(\exists \varphi \in E', \forall x\in C\) tal que \(\varphi(x)<\varphi(x_0)\).
+\end{proposition}
+\begin{proposition}
+    Sean \(0\neq \varphi \in E'\) y \(\emptyset \neq A\ab  \subset E\) convexo, entonces \(\varphi(A)\ab\subseteq \R\).  
+\end{proposition}
+\begin{theorem}
+    \emph{Primera Forma Geométrica del Teorema de Hahn Banach.} Sean \(\emptyset \neq A,B \subset E\) disjuntos. Si \(A\ab\subset E\) entonces \(\exists \varphi \in E', \exists a \in \R, \forall x\in A, \forall y\in B\) se tiene \(\varphi(x) < a \leq \varphi(y)\). 
+\end{theorem}
+\begin{note}
+    En este caso decimos que el hiperplano \([\varphi =  a]\) separa a \(A\) de \(B\). 
+\end{note}
+\begin{theorem}
+    \emph{Segunda Forma Geométrica del Teorema de Hahn Banach.} Sean \(\emptyset \neq A,B \subset E\) disjuntos. Si \(A\ce\subset E\) y \(B\) es compacto entonces \(\exists \varphi \in E', \exists a,b \in \R, \forall x\in A, \forall y\in B\) se tiene \(\varphi(x) < a <b \leq \varphi(y)\). 
+\end{theorem}
+\begin{note}
+    Ahora decimos que \(\forall c\in (a,b)\) el hiperplano \([\varphi = c]\) separa estrictamente a \(A\) de \(B\). 
+\end{note}
+\begin{note}
+    \emph{Colorario.} Si \(M\ce\leq E\) entonces \(\forall x_0\in E\setminus M,\exists \varphi \in E', \forall x\in M\) se tiene \(\varphi(x_0)=1\) y \(\varphi(x) = 0\). 
+\end{note}
+\begin{note}
+    \emph{Colorario.} Sea \(x_0\in M\leq E\), entonces \(x_0\in \overline{M}\) sii \(\forall \varphi \in E', \forall x\in M\) se tiene \(\varphi(x_0) = 0\) siempre que \(\varphi(x)=0\). 
+\end{note}

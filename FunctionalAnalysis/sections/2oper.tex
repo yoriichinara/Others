@@ -1,0 +1,161 @@
+\section{Operadores Lineales}
+
+\begin{definition}
+    Un \emph{operador lineal continuo} es una función \(T:E\to F \) que verifica lo siguiente, 
+    \begin{itemize}
+        \item \(\forall x,y \in E,\forall \alpha \in \K \ \text{tenemos } T(\alpha x+y) =  \alpha T(x) + T(y)\). 
+        \item \(\forall x_0 \in E,\forall \epsilon > 0, \exists \delta > 0\) tal que \(\|x-x_0\|<\delta \Rightarrow \|T(x)-T(x_0)\|<\epsilon\). 
+    \end{itemize}
+ \end{definition}
+\newcommand{\Lc}{\mathcal{L}}
+\begin{note}
+    \(\Lc(E,F)=\{T:E\to F\ |\ T \text{ es lineal continuo}\}\) es espacio vectorial sobre \(\K\). Si \(F = \K\) entonces \(\Lc(E,\K)=E'\), el espacio dual, cuyos elementos son funciones.   
+\end{note}
+\begin{definition}
+    \(E\cong F\) sii \(\exists T\in \Lc(E,F)\) biyectivo cuyo inverso \(T^{-1}\in \Lc(F,E)\). 
+\end{definition}
+\begin{definition}
+    Una función \(f:E\to F \) es una \emph{isometría} sii \(\forall x\in E\) tenemos \(\|f(x)\| = \|x\|\).      
+\end{definition}
+\begin{note}
+    Si \(f\) es lineal entonces es una \emph{isometría lineal}. Si \(f\) es un isomorfismo entonces le llamamos \emph{isomorfimo isométrico}. 
+\end{note}
+
+\Ei 
+
+\begin{exercise}
+    Toda isometría lineal es inyectiva y continua. 
+\end{exercise}
+
+\Ef
+
+\subsection{Caracterización}
+
+\begin{definition}
+    Una función \(f:M\to N \) es \emph{Lipschitz} si \(\exists L>0, \forall x,y\in M\) tal que \(\|f(x)- f(y)\|\leq L \|x-y\|\).  
+\end{definition}
+\begin{definition}
+    \(f\) es \emph{uniforme continua} si \(\forall \epsilon >0,\exists \delta >0,\forall x,y\in M\) tal que \(\|x-y\|<\delta \Rightarrow \|f(x)-f(y)\|<\epsilon\). 
+\end{definition}
+\begin{note}
+    Lipschitz \(\Rightarrow\) uniforme continua \(\Rightarrow\) continua \(\Rightarrow\) continua en \(x_0\). 
+\end{note}
+\begin{theorem}
+    Sea \(T\in \Lc(E,F)\). \(T\) es Lipschitz \(\Leftrightarrow\) \(T\) es uniforme continuo \(\Leftrightarrow\ T\) es continuo \(\Leftrightarrow\ \exists x_0\in E\) tal que \(T\) es continuo en \(x_0\) \(\Leftrightarrow\ T\) es continuo en \(0\)  \(\Leftrightarrow\ \sup\{\|T(x)\| : x\in B_E\}<\infty\) \(\Leftrightarrow \) \(\exists C\geq 0, \forall x\in E\) tal que \(\|T(x)\|\leq C \|x\|\). 
+\end{theorem}
+\begin{note}
+    \emph{Colorario.} \(T\in \Lc(E,F)\) biyectivo es isomorfismo sii \(\exists C_1,C_2>0, \forall x\in E\) tal que \(C_1\|x\|\leq \|T(x)\| \leq C_2 \|x\|\). 
+\end{note}
+\begin{proposition}
+    Sean \(E,F\) espacios normados, entonces \((a) \ \|T\| = \sup\{\|T(x)\|: x\in B_E\}\) es norma en \(\Lc(E,F)\); \((b) \ \forall T\in \Lc(E,F),\forall x\in E \) tenemos \( \|T(x)\| = \|T\|\cdot\|x\|\) y \((c) \ F\text{ Banach } \Rightarrow \Lc(E,F) \text{ Banach}\). 
+\end{proposition}
+\begin{note}
+    \emph{Colorario (c).} \(E'\) es Banach. 
+\end{note}
+
+\Ei 
+
+\begin{example}
+    El operador identidad \(1_E: E \to E \in \Lc(E,E)\) para el cual \(\|1_E\|=1\); Operador nulo \(O:E\to F \in \Lc(E,F)\) que envía \(x\mapsto 0_F\) tenemos \(\|O\| = 0\). 
+\end{example}
+\begin{example}
+    Sea \(\varphi \in E'\) e \(y\in F\). Sea \(\varphi \otimes y: x \mapsto \varphi(x)y \in \Lc(E,F)\) y tiene norma \(\|\varphi\|\cdot\|y\|\).  
+\end{example}
+\begin{example}
+    Sea \((b_n) \in \ell_p\). Considere \(T:\ell_\infty \to \ell_p\) tal que \((a_n)\mapsto (a_nb_n)\) \footnote{\(T\) es llamado \emph{operador diagonal} por \((b_n)\).}. 
+\end{example}
+\begin{example}
+    Sea \(g\in L_p[0,1]\). Como en el ejemplo anterior considere \(T:C[0,1] \to L_p[0,1]\), \( T(f) = fg\). El operador \(T\in \Lc(C[0,1],L_p[0,1])\) y es llamado \emph{operador multiplicación}. 
+\end{example}
+\begin{exercise}
+    \(T\) lineal en \(E\) con \(\dim(E)<\infty \Rightarrow \ T \) continuo. En dimensión infinita no siempre es cierto. 
+\end{exercise}
+\begin{example}
+    Sea \(\mathcal{P}[0,1]\subset C[0,1]\) con la norma \(\|\cdot\|_\infty \). El operador derivación es lineal, suponga continuo, entonces \(\exists C, \forall p \in \mathcal{P}[0,1] \) tal que \(\|T(p)\|_\infty \leq C\|p\|_\infty\). Sea \(f_n = t^n\), tenemos \(n = \|f_n^{'}\|_\infty = \| T(f_n)\|_\infty \leq C\|f_n\|_\infty = C \). 
+\end{example}
+
+\Ef
+
+\subsection{Teorema Banach-Steinhaus}
+
+\begin{theorem}
+    \emph{Baire.} Sea \(M\) espacio métrico completo y \(\left(F\ce_n\right) \subseteq M\) tal que \(M=\bigcup F_n\). Entonces \(\exists n_0\in \N\) tal que \(\overset{\circ}{F_{n_0}} \neq \emptyset\).    
+\end{theorem}
+\begin{theorem}
+    \emph{Banach-Steinhaus.} Sean \(E\) Banach, \(F\) espacio normado y \((T_i)\) una sucesión de operadores en \(\Li(E,F)\) tales que \(\forall x\in E,\exists C_x <\infty\) tal que \(\sup \|T_i(x)\| < C_x\). Entonces \(\sup \|T_i\| < \infty\).  
+\end{theorem}
+\begin{note}
+    \emph{Colorario.} Sea \((T_n)\subset \Li(E,F)\). Si \(\forall x\in E\) la sucesión \((T_n(x)) \to y\in F\) entonces \(T(x) = \lim T_n(x) \in \Li(E,F)\).  
+\end{note}
+
+\Ei 
+
+\begin{example}
+    \((x,y)\mapsto \frac{xy}{x^2+y^2}\), \((0,0) \mapsto 0\) es continua en  \(\R^2\setminus \{0\}\), en aplicaciones \emph{bilineales} no existen cosas así. 
+\end{example}
+
+\Ef
+
+\begin{definition}
+    Sean \(E_1, E_2 \text{ y } F \) espacios vectoriales. Una aplicación \(B:E_1\times E_2 \to F\) es \emph{bilineal} sii \(\forall x_1\in E_1,\forall x_2\in E_2 \text{ fijos, los operadores }B(x_1,\cdot): E_2 \to F\) y \(B(\cdot,x_2): E_1\to F\) son lineales. 
+\end{definition}
+
+\begin{note}
+    \emph{Colorario.} Si \(E_2\) es completo y \(B:E_1\times E_2 \to F \) es bilineal y continuo a trozos entonces \(B\in \Li(E_1\times E_2, F)\).    
+\end{note}
+
+\Ei
+
+\begin{example}
+    \(\forall n\in\N\) sea \(\varphi_n: c_{00} \ni (a_j) \mapsto na_n \in \K\). Es claro que \((\varphi_n)\subset (c_{00})'\) y \(\|\varphi_n\|=n\), aquí \(\forall x\in c_{00} \text{ se tiene }\sup \|\varphi_n(x)\|<\infty\), sin embargo, \(\sup\|\varphi_n\|=\infty\). 
+\end{example}
+
+\Ef
+
+\subsection{Teorema de la Aplicación Abierta}
+
+\begin{definition}
+    Nos referimos a \(B_E(x_0;r)= \{x\in E: \|x-x_0\|<r\}\) como bola abierta en \(E\) centrada en \(x_0\) de radio \(r>0\). 
+\end{definition}
+\begin{proposition}
+    Sean \(E\) Banach, \(F\) espacio normado y \(F\leftarrow E : T \in \Li(E,F)\). Si existieran \(R,r >0\) tales que \(\overline{T(B_E(0;R))}\supseteq B_F(0;r)\) entonces \(T(B_E(0;R)) \supseteq B_F\left(0;\frac{r}{2}\right)\).  
+\end{proposition}
+\begin{theorem}
+    \emph{Aplicación Abierta.} Sean \(E\text{ e }F\) Banach. Si \(F \leftarrow E:\overset{\twoheadrightarrow}{T}\in \Li(E,F)\) entonces \(T\) es una aplicación abierta.  
+\end{theorem}
+\begin{note}
+    \emph{Colorario.} En particular si \(T\) es una biyección entonces \(E\cong F\).  
+\end{note}
+
+\Ei
+
+\begin{exercise}
+    Muestre que  \(T: c_{00}\to c_{00}\) tal que \((a_n)\mapsto \left(\frac{a_n}{n}\right)\) es lineal, continuo y biyectivo. 
+\end{exercise}
+\begin{example}
+    En el ejercicio anterior \(T^{-1}\) no es continuo.  
+\end{example}
+\begin{example}
+    Todo subespacio \(F\ce\leq C[0,1]\) tal que \(\dim (F) = \infty \) tiene al menos una función \(f\) tal que \(f\notin C^1[0,1]\). Hint: Contradicción -- Aplicación Abierta -- Teorema de Riesz. 
+\end{example}
+
+\Ef
+
+\begin{definition}
+    Sean \(E \text{ e } F\) espacios normados y \(T:E\to F\) lineal. El \emph{gráfico} de \(T\) es el conjunto, 
+    \[G(T) = \{(x,T(x)):x\in E\}\subseteq E\times F. \]
+\end{definition}
+\begin{theorem}
+    \emph{Gráfico Cerrado.} Sean \(E \text{ e } F\) Banach y \(T:E\to F\) lineal. El operador \(T\) es continuo sii \(G(T)\) es cerrado en \(E\times F\). 
+\end{theorem}
+
+\Ei
+
+\begin{exercise}
+    Si \(T\) no es continuo una de las implicaciones en el Teorema del Gráfico Cerrado continua valiendo. 
+\end{exercise}
+\begin{example}
+    Sean \(E\) Banach y \(T:E\to E'\) lineal \emph{símetrico}, es decir, \(\forall x,y\in E \) tenemos \(T(x)(y)=T(y)(x)\). El operador \(T\) es continuo. Hint: Gráfico Cerrado. 
+\end{example}
+
+\Ef

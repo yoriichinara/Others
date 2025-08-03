@@ -1,0 +1,192 @@
+\section{Espacios Vectoriales Normados}
+
+\subsection{Definición y Ejemplos}
+
+\begin{definition}
+    Sea \(E\) un espacio vectorial sobre \(\K\). Una función \(\|\cdot\|: E\rightarrow \R^+ \) es \emph{norma} sii \(\forall x,y\in E \ \text{y}\ \alpha\in \K\),   
+    \begin{itemize}
+        \item \(\|x\|\geq 0\) e \(\|x\|=0 \Leftrightarrow x = 0\). 
+        \item \(\|\alpha x\| = |\alpha|\|x\|\). 
+        \item \(\|x+y\|\leq \|x\|+\|y\|\). 
+    \end{itemize} 
+\end{definition}
+
+\begin{note}
+    \((E,\|\cdot\|)\) espacio normado implica espacio métrico, vale la teoría existente para ellos en particular convergencia. 
+\end{note}
+
+\begin{definition}
+    Sea \((x_n)\subset E\). Decimos que \(x_n\to x \in E\) sii \(\lim\limits_{n\to\infty} \|x_n - x\| = 0\).  
+\end{definition}
+
+\Ei
+
+\begin{exercise}
+    Las operaciones algebraícas en \(E\) son funciones continuas. 
+\end{exercise}
+
+\Ef
+
+\begin{definition}
+    \((E,\|\cdot\|)\) es \emph{Banach} sii es completo con la métrica inducida por la norma. 
+\end{definition}
+
+\Ei 
+
+\begin{example}
+    \((\R,\|\cdot\|_2)\) y \((\C,\|\cdot\|_2)\) son espacios de Banach. 
+\end{example}
+
+\Ef  
+
+\begin{proposition}
+    Sea \(E\) Banach y \(F\leq E\) un subespacio vectorial, entonces \(F\) es Banach sii \(F\) es cerrado en \(E\). 
+\end{proposition}
+
+\Ei 
+
+\begin{example}
+    Sea \(B(X):= \{f:X\rightarrow \K \ |\ f \ \text{es acotada}\}\) e \(\|f\|_\infty := \sup |f(x)|\), entonces \(B(X)\) es Banach. Sea \([a,b]\subset \R\), conjunto compacto, observe que \(C^0[a,b]\leq B[a,b]\) normado.   
+\end{example}
+\begin{exercise}
+    Complete los detalles del ejemplo, y muestre que \(C^0[a,b]\) es Banach.
+\end{exercise}
+\begin{example}
+    Considere \(C^1[a,b] \leq C^0[a,b]\), no es Banach. Sin embargo con \(\|f^{(1)}\|_{\infty^1}:= \|f\|_\infty + \|f^{(1)}\|_\infty\) si que lo es. En general \(C^k[a,b]\) es Banach con \(\|f^{(k)}\|_{\infty^k} = \sum_{i=0}^k \|f^{(i)}\|_\infty\). 
+\end{example}
+
+\Ef
+
+\begin{proposition}
+    Si \(B = \{x_1,\ldots,x_n\}\) es una base l.i. de \(E\), entonces \(\exists c>0, \forall a \in \K^n\) tal que \(\left\|\sum a_ix_i\right\|\geq c \sum |a_i|\). 
+\end{proposition}
+\begin{theorem}
+    Todo espacio \(E\) tal que \(\dim{(E)}<\infty\) es Banach. Consecuentemente, también lo son todos los \(F\leq E\) cerrados. 
+\end{theorem}
+
+\Ei
+
+\begin{example}
+    Sea \(c_0=\{(a_k) \subset \K : a_k \rightarrow 0\}\) con las operaciones usuales y \(\|(a_k)\|_\infty := \sup |a_k|\). Así dado \(c_0\) es Banach. 
+\end{example}
+\begin{example}
+    Sea \(c_{00}:= \{(a_k)\in c_0 : \exists n_0\in \N \text{ tal que } a_k = 0\text{ para } k\geq n_0\}\). No cerrado, no Banach. 
+\end{example}
+
+\Ef
+
+\subsection{Espacios \(L_p,\ \ell_p\)}
+
+\begin{definition}
+    Sea \(\Li(X,\Sigma,\mu)\) espacio de medida. Consideremos \(\Li_p(X,\Sigma,\mu)\) el subespacio de las \(f:X\rightarrow\K\) tales que para \(1\leq p<\infty \) el valor \(\|f\|_p := \displaystyle \left(\int_X |f|^p\ d\mu\right)^{\frac{1}{p}}< \infty \). 
+\end{definition}
+\begin{theorem}
+    \emph{Hölder.} Sean \(p,q>1\) tales que \(1/p + 1/q = 1\). Si \(f\in \Li_p\) e \(g\in \Li_q\) entonces \(fg\in \Li_1\) y \(\|fg\|_1\leq \|f\|_p\cdot\|g\|_q\).  
+\end{theorem}
+\begin{theorem}
+    \emph{Minkowski.} Si \(f,g\in \Li_p\) entonces \(f+g\in \Li_p\) y \(\|f+g\|_p\leq \|f\|_p+\|g\|_p\) 
+\end{theorem}
+\begin{note}
+    Note que \(\|f\|_p = 0 \nRightarrow f=0\). Ello motiva la siguiente consideración.  
+\end{note}
+\begin{definition}
+    Sean \(f,g\in \Li_p\). Decimos que \(f\sim g\) si \(f=g\) \(\mu\)-casi siempre, es decir, \(\exists A\in \Sigma \) tal que \(\mu(A)=0\) y \(f(x)=g(x)\) para todo \(x\in X\setminus A\). 
+\end{definition}
+\begin{theorem}
+    El conjunto \(L_p = \Li_p/\hspace{-0.1cm}\sim\) con las operaciones \([f]+[g] = [f+g]\), \([cf]=c[f]\) y norma \(\|[f]\|_p := \|f\|_p\) es Banach. 
+\end{theorem}
+\begin{definition}
+    Sea \(\Li_\infty\) el espacio de las \(f\) medibles acotadas \(\mu\)-cuasi siempre\footnote{\(|f(x)|\leq k < \infty\) para cada \(x\in X\setminus N\) donde \(\mu(N\in \Sigma)=0\).}. Para cada \(x\in X\setminus N\) sean \(S_f(N) = \sup|f(x)|\) y \(\|f\|_\infty:= \inf S_f(N)\) de los \(N\in \Sigma\) tales que \(\mu(N) = 0\). 
+\end{definition}
+\begin{theorem}
+    El espacio \(L_\infty = \Li_\infty/\hspace{-0.1cm}\sim \) con \(\|[f]\|_\infty := \|f\|_\infty\) es Banach. 
+\end{theorem}
+
+\Ei
+
+\begin{example}
+    Sean \(p\geq 1\) y \(\ell_p = \left\{(a_k)\subset \K : \displaystyle \sum |a_k|^p < \infty\right\}\). Considere \(\Sigma = \wp(\N)\) y \(\mu_c\) la medida de conteo. El espacio \(\ell_p\) coincide con \(L_p(\N,\wp(\N), \mu_c)\), en este caso las operaciones son simplemente las usuales de sucesiones y \(\displaystyle \|(a_n)\|_p = \left(\sum |a_k|^p\right)^{\frac{1}{p}}\). Entonces \(\ell_p\) es Banach.
+\end{example}
+
+\Ef
+
+\begin{proposition}
+   \emph{Hölder-Minkowski en sucesiones.} Para \(p,q>1\) tales que \(1/p+1/q = 1\) y \(\forall n\in \N\) vale que 
+   \[\sum^n |a_ib_i|\leq \left(\sum^{n}|a_i|^p\right)^{\frac{1}{p}} \cdot \left(\sum^{n}|b_i|^q\right)^{\frac{1}{q}}\text{\ \ y \ \ } \left(\sum^{n}|a_i + b_i|^p\right)^{\frac{1}{p}}\leq \left(\sum^{n}|a_i|^{p}\right)^{\frac{1}{p}} + \left(\sum^{n}|b_i|^{p}\right)^{\frac{1}{p}}\]
+\end{proposition}
+
+\Ei
+
+\begin{example}
+    El espacio \(\ell_\infty = \{(a_k)\subset \K: \sup |a_k| <\infty\} \) con la norma \(\|(a_k)\|_\infty = \sup |a_k|\) es Banach. Esto es directo observando que \(\ell_\infty = L_\infty(\N,\wp(\N),\mu_c) = B(\N)\)\footnote{Verificando alguna de las dos igualdades.}.  
+\end{example}
+
+\Ef
+
+\subsection{Compacidad}
+
+\begin{definition}
+    \(A\subseteq X\) es compacto sii todo cubrimiento abierto de \(A\) admite un subcubrimiento finito. 
+\end{definition}
+\begin{note}
+    En espacios métricos vale decir que toda \((a_k)\subset A\) admite una subsucesión \((a_{k_i})\) tal que \(a_{k_i} \rightarrow a \in A\). 
+\end{note}
+\begin{proposition}
+    Sea \((E,\|\cdot\|)\) con \(\dim(E)<\infty\), entonces los compactos de \(E\) son precisamente los cerrados y acotados. 
+\end{proposition}
+\begin{note}
+    \emph{Colorario.} La \emph{bola unitaria} \(B_E := \{x\in E : \|x\|\leq 1 \}\) es compacta en espacios de dimensión finita. 
+\end{note}
+\begin{proposition}
+    \emph{Riesz.} Si \(M<E\) cerrado y \(\theta \in (0,1)\), entonces \(\exists y\in E\setminus M,\forall x\in M\) tal que \(\|y\|=1\) y \(\|y-x\|\leq \theta \). 
+\end{proposition}
+\begin{theorem}
+    \(\dim(E)<\infty\) sii \(B_E\) es compacta en \(E\). 
+\end{theorem}
+
+\vfill 
+
+\subsection{Espacios Separables}
+
+\begin{definition}
+    \(E\) es separable sii \(\exists D\subset E\) enumerable y denso en \(E\). 
+\end{definition}
+
+\Ei
+
+\begin{example}
+    Espacios con \(\dim (E)<\infty\) son separables. Caso de \(\mathbb{Q}\subset \R\). 
+\end{example}
+
+\Ef
+
+\begin{proposition}
+    \(E\) es separable sii \(\exists A\subset E\) enumerable tal que \(\langle A\rangle\) es denso en \(E\). 
+\end{proposition}
+
+\Ei
+
+\begin{example}
+    \(c_0\) y \(\ell_p \) son separables, mientras \(\ell_\infty\) no lo es. 
+\end{example}
+
+\Ef
+
+\begin{theorem}
+    \emph{Aproximación de Weierstrass.} \(f:[a,b]\rightarrow \K\) continua \(\Rightarrow \forall\epsilon>0,\forall x\in [a,b], \exists P:\K\rightarrow \K \) tal que \(|P(x) - f(x)|<\epsilon \). 
+\end{theorem}
+
+\Ei
+
+\begin{example}
+    \(C[a,b]\) es separable. Hint:\(\langle t \rangle \). 
+\end{example}
+\begin{example}
+    \(L_p[a,b]\) es separable. Hint: continuas y polinomios. 
+\end{example}
+
+\Ef
+
+\begin{proposition}
+    Si \(E\) es separable entonces \(F\leq E\) también lo es. 
+\end{proposition}

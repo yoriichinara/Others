@@ -1,0 +1,99 @@
+\section{Dualidad y Espacios Reflexivos}
+
+\subsection{Duales \(L_p(X,\Sigma, \mu)\)}
+\-\vspace{-0.25in}
+
+\Ei
+
+%\begin{example}
+%    Sea \(\dual{g \in L_{p^*}}\). Considere \(\varphi_g: L_{p} \to \K \) tal que \(f\mapsto \int fg \ d\mu\). Por Holder 
+%    \[|\varphi_g(f)| =\Big|\int fg \Big| \leq \int |fg| \leq \|g\|_\dual{p*} \cdot \|f\|_p = C \cdot \|f\|_p.\] 
+%    Con esto, \(\varphi_g\) es bien definida, \(\varphi_g\in L_p^{'}\) y \(\|\varphi_g\|\leq \|g\|_\dual{p^*}\)
+%\end{example}
+\- \todo[gris]{Linealidad inmediata}\todo[gris]{Continuidad, cálcule \(|\varphi_g(f)|\) aplique Hölder \(\Rightarrow \varphi_g \in (L_p){'}\) y \(\|\varphi_g\|\leq \|g\|_{p^*}\)}\todo[gris]{\(\|g\|_{p^*}\leq \|\varphi_g\|\) y \(g\neq 0\). Si \(p>1\) tome \vspace{-0.2cm}\[f(x)=\frac{|g(x)|^{p^*-1}\overline{g(x)}}{\|g\|_{p^*}^{p^*-1}|g(x)|}\]\vspace{-0.2cm}}\todo[gris]{Sobreyectividad? Bien, gracias}
+\begin{theorem}
+    \(L_{p*} \simeq (L_{p}){'}\) isométricamente (para \(p=1\) suponemos \(p^*=\infty\) e \(\mu\) médida \(\sigma\)-finita) con la relación de dualidad dada por
+    \[L_{p^*} \ni \textcolor{red}{g \mapsto \ } \underset{\underset{(L_p){'}}{\rotatebox{-90}{$\in$}}}{\textcolor{red}{\varphi_g}}: \overset{ \overset{L_p}{ \rotatebox{90}{$\in$}} }{f}\mapsto  \int_X fg\ d\mu \  \in \K.\]
+\end{theorem}
+
+\begin{note}
+    El caso \(p=1\) no admite resumen, véase \cite[pág. 70]{botelho2025introduction}. Por lo pronto damos por sentado que \( L_\infty \simeq (L_1){'}\) isométricamente. 
+\end{note}
+\begin{proposition}
+    \(\ell_{p^*} \simeq (\ell_{p}){'}\)\todo[orange, noline]{Caso particular \(L_p(\N, \wp(\N), \mu_c)\), solo busca exhibir como es la relación de dualidad en \(\ell_p\)}\todo[red,noline]{\(\ell_\infty\simeq (\ell_1){'}\), pero \( \ell_1 \not\simeq(\ell_\infty){'}\), pues sabemos que \(\ell_\infty \) no es separable} isométricamente (para \(p=1\) suponemos \(p^*=\infty\)) con la relación de dualidad 
+    \[\ell_{p^*} \ni \textcolor{red}{(b_j) \mapsto \ } \underset{\underset{(\ell_p){'}}{\rotatebox{-90}{$\in$}}}{\textcolor{red}{\varphi_b}}: \overset{ \overset{\ell_p}{ \rotatebox{90}{$\in$}} }{(a_j)}\mapsto  \sum a_jb_j \  \in \K.\] 
+\end{proposition}
+\- \vspace{0.15cm} \todo[gris]{Bien definida, lineal, continua y \(\|\varphi_b\|\leq \|b\|_1\) es todo calcado}\todo[gris]{Sobreyectividad y \(\|b\|_1\leq \|\varphi\|\). Para \(\varphi \in (c_0){'}\) considere \((b_j) = (\varphi(e_j))\), defina \((\alpha_j)\)  \vspace{-0.2cm} \[\alpha_j=\frac{\overline{\varphi(e_j)}}{|\varphi(e_j)|}, \ \varphi(e_j)\neq 0 \text{ y }j\leq n\] Con eso consigue, para ver que \(\varphi_b = \varphi\) acuerdese que \(c_0 \ni a = \lim \sum a_je_j\)}
+\begin{proposition}
+    \(\ell_1\simeq (c_0)^{'}\) isométricamente, con la relación de dualidad dada por  
+    \[ b \in \ell_1 \mapsto \varphi_b \in (c_0)^{'},  \hspace{0.5cm} \varphi_b((a_n)) = \sum a_jb_j\]
+\end{proposition}
+\- \vspace{1.2cm}
+\subsection{Bidual y Espacios Reflexivos}
+
+\- \vspace{-0.25in}\newline 
+\- \todo[gris]{Linealidad y continuidad son inmediatos}\todo[gris]{Isometría, cálcule \(\|J_E(x)\|\), desarrolle y aplique el último colorario de H-B}
+\begin{proposition}
+    Para cada espacio normado \(E\), el operador lineal \(J_E:E\to E{''}\) que envía 
+    \(E\ni x\mapsto \underset{\underset{E{'}}{\rotatebox{90}{$\in$}}}{\varphi}(x) \in \K \) es una isometría lineal llamada \emph{inmersión canónica} de \(E\) en \(E{''}\).  
+\end{proposition}
+\begin{note}
+    Isometría lineal es inyectiva, luego, \(E{''}\) contiene una copia isometríca de \(E\).
+\end{note}
+\-  \todo[gris]{Tome \(\widehat{E} = \overline{J_E(E)}\subseteq E{''}\)}\todo[orange, noline]{Demostración aparentemente sencilla, pero recuerde que requirio H-B} 
+\begin{proposition}
+   Todo espacio normado \(E\) admite completación, esto es, \(\exists \widehat{E}\) Banach que contiene una copia isometríca de \(E\) densa en \(\widehat{E}\). 
+\end{proposition}
+
+
+\begin{definition}
+    Un espacio normado \(E\) se dice \emph{reflexivo} si \(J_E: E \twoheadrightarrow E{''}\), en cuyo caso \(E\simeq E{''}\).
+\end{definition}
+
+\-  \todo[gris]{Directo, recuerde que \(E{'} \) es Banach}
+\begin{proposition}
+    Todo espacio refléxivo es Banach. 
+\end{proposition}
+\begin{example}
+    Si \(\dim(E) =n <\infty\) entonces \(E\) es reflexivo. \textcolor{gray}{\(\rightarrow  \dim(E{''}) = n\)}% \Rightarrow J_E: E \twoheadrightarrow E^{\prime \prime}\)}
+\end{example}
+\begin{example}
+    \(c_{00}\) no es reflexivo. \textcolor{gray}{\(\rightarrow\) Contrarrecíproca de la última proposición}% (c_0^\prime)^\prime = \ell_1^\prime = \ell_\infty\), es claro que \(c_0^{\prime\prime}\not\twoheadrightarrow \ell_\infty\)}
+\end{example}
+
+\begin{example}
+    \(c_0\) no es reflexivo. \textcolor{gray}{\(\rightarrow\) Despliegue el bidual} 
+\end{example}
+\-  \todo[gris]{Directo, \(F{'} \) separable \(\Rightarrow F \) separable}
+\begin{proposition}
+    Si \(E\) es separable y reflexivo, entonces \(E{'}\) es separable.
+\end{proposition}
+\begin{example}
+    \(\ell_1\) no es reflexivo. \textcolor{gray}{\(\rightarrow\) Inmediato de la proposición anterior}
+\end{example}
+\begin{definition}
+    Sean \(E,F\) espacios normados e \(T \in \Li(E,F)\). El operador \(T{'} : F{'} \to E{'} \) que envía \(\varphi \mapsto \varphi (T(x))\) es llamado \emph{operador adjunto} de \(T\). 
+\end{definition}
+\begin{example}
+    Sea \(T\in \Li(\ell_p,\ell_p)\) que envía \((a_1, a_2, \ldots) \mapsto (a_2, a_3, \ldots)\), \emph{backward shift operator} para los amigos, tiene como adjunto \(T{'} \in \Li(\ell_{p^*}, \ell_{p^*})\) que envía \((b_1, b_2, \ldots ) \mapsto (0, b_1, b_2, \ldots )\), bien llamado \emph{forward shift operator}. \textcolor{gray}{\(\rightarrow\) Desarrolle \((\varphi_b)(T(x))\)}  
+\end{example}
+\-  \todo[gris]{Linealidad es inmediata} \todo[gris]{Continuidad, desarrolle \(\|T{'}\|\), de aqui también sale que \(\|T{'}\|\leq \|T\|\)} \todo[gris]{\(\|T\|\leq \|T{'}\|\) se consigue aplicando el colorario de H-B a \(\|T(x)\|\)} \todo[gris]{\(+\) Isomorfismo. Para ver que \(T{'}\) es sobreyectivo, use \(T^{-1}\), inyectividad se consigue \(\ker(T{'})\)} \todo[gris]{\(+\) Isometría. Desarrolle \(\|T{'}(\varphi) \|\), tenga presente que \(x\in B_E \Leftrightarrow T(x) \in B_F\)}
+\begin{proposition}
+    Para cada \(T\in \Li(E,F) \) tenemos \(T{'} \in \Li(F{'}, E{'})\) y \( \|T\| = \|T{'}\|\). Más aun, si \(T\) es isomorfismo (isométrico) entonces \(T{'} \) también es isomorfismo (isométrico). 
+\end{proposition}
+\vspace{1.42in}
+\-  \todo[gris]{Tome los isomorfismos isométricos \(T:L_{p^*}\to (L_p){'} \), \(S: L_p\to (L_{p^*}){'} \) e \((T^{-1}){'}\)}\todo[gris]{Muestre que \((T^{-1}){'} \circ S = J_{L_p}: L_p\to (L_p){'}\). Tome \(f\in L_p\), \(\varphi \in (L_p){'}\) e defina \(g = T^{-1}(\varphi) \in L_{p^*}\). Desarrolle \(((T^{-1}){'} \circ S)(f)(\varphi)\)}
+\begin{proposition}
+    Para \(1<p<\infty\) los espacios \(L_p\) son reflexivos. 
+\end{proposition}
+
+\vspace{0.75in}
+\-  \todo[gris]{\((\Rightarrow)\) Tome \(\zeta{'''}\in E{'''}\), trabaje con \(J_{E{'}}\) e \((J_E){'}\) para hallar la preimagen}\todo[gris]{\((\Leftarrow)\) Supongo que no es reflexivo, y contradiga la existencia de \(0 \neq \varphi \in E{'''}\) que separe \(J_E(E)\) en \(E{''}\) (Prop. Aplicaciones de H-B)}
+\begin{proposition}
+    Un espacio \(E\) Banach es reflexivo sii \(E{'} \) es reflexivo.  
+\end{proposition}
+\vspace{0.46in}
+
+\begin{example}
+    \(\ell_\infty\) no es reflexivo. \textcolor{gray}{\(\rightarrow\) \(\ell_1\) no es reflexivo}
+\end{example}

@@ -1,0 +1,290 @@
+\section{Espacios de Hilbert}
+
+\subsection{Espacios con Producto Interno}
+
+\noindent 
+\begin{definition}
+   Sea \(E\) espacio vectorial sobre \(\K \). Un \emph{producto interno} sobre \(E\) es una función \(\langle \cdot , \cdot \rangle: E\times E \to \K \) tal que  \(\forall x, x{'}, y \in E, \ \forall \lambda \in \K\) se tiene,   \noindent
+   \begin{enumerate}[label=(P\arabic*), leftmargin = 1.4cm]
+    \item \(\langle x + x{'}, y \rangle = \langle x, y \rangle + \langle x{'} , y \rangle\).
+    \item \(\langle \lambda x, y \rangle = \lambda\langle x, y \rangle \).
+    \item \(\langle x, y \rangle = \overline{\langle y,x \rangle} \).
+    \item Si \(x\neq 0\) entonces \(\langle x, x \rangle \in \R^{+}  \).
+   \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+    \textcolor{rojoscuro}{\textbf{\underline{Exercise}}}\hspace{0.04cm} Demuestre que \((a)\ \langle x, 0 \rangle = \langle 0, y \rangle=0\); \((b)\ \langle x, x \rangle =0\) sii \(x=0\); \((c) \ \langle x, y + y{'} \rangle = \langle x, y \rangle + \langle x, y{'}\rangle\); \( (d)\ \langle x, \lambda y  \rangle = \overline{\lambda} \langle x, y \rangle\); \((e)\) \ Si \(\forall z \in E\) tenemos  \(\langle z, y \rangle = \langle z, y{'} \rangle\) entonces \(y = y{'}\). \textcolor{gray}{\(\rightarrow\) Consecuencia de las propiedades en la definición}
+\end{lemma}
+
+\- \todo[gris]{Suponga \(x, y \neq 0\). Tome \(a = \langle y,y\rangle \), \(b = \langle x,y\rangle\) y desarrolle el término 
+\- \vspace{-0.1cm}
+\[0 \leq \langle ax -by , ax - by\rangle \]
+\- \vspace{-0.4cm}
+} \todo[gris]{Para la otra afirmación suponga la igualdad y vea que pasa}
+\begin{proposition}[Desigualdad de Cauchy-Schwarz] 
+    Sean \(E\) espacio con producto interno e \(\|\cdot \|: x \mapsto \|x\| = \sqrt{\langle x , x \rangle}\). Entonces, \(\forall x,y\in E\) tenemos \(|\langle x,y\rangle| \leq \|x\| \|y\|\), igualdad cuando \(\exists \alpha \in \K\) tal que \(y = \alpha x\) (son l.d.).      
+\end{proposition}
+\-
+\begin{note}
+    \emph{Colorario.} La función \(\|\cdot \| : E \times E \to \R^+\) define una norma en \(E\). \textcolor{gray}{\(\rightarrow\) (N1) y (N2) son directas. Para (N3) desarme \(\|x+y\|^2\) y aplique Cauchy-Schwarz }
+\end{note}
+
+\begin{example}
+   Sean \((x_n), (y_n) \in \ell_2\), la función que envía \(\langle (x_n), (y_n)\rangle \mapsto \sum a_n \overline{b_n}\) define un producto interno en \(\ell_2\) cuya norma inducida de hecho coincide con \(\|\cdot \|_2\). %\footnote{La convergencia de la serie de nuevo es garantizada por Hölder. } 
+\end{example}
+\begin{example}
+    En \(L_2\) pasa exactamente lo mismo definiendo \(\displaystyle\langle f,g\rangle \mapsto \int_X f \ \overline{g}\ d\mu\). 
+\end{example}
+
+\-  \todo[gris]{Tome \(x_0 \in E\) fijo, agrupe la diferencia de las imagenes y aplique Cauchy-Schwarz}\todo[orange, noline]{Este detalle es importante pues nos garantiza compatibilidad topologica. }
+\begin{proposition}
+    Sean \(E\) espacio con producto interno e \(y_0\in E\) fijo. Las funciones \(x\mapsto \langle x, y_0\rangle \) e \( x \mapsto \langle y_0, x\rangle \) son continuas. 
+\end{proposition}
+\begin{definition}\todo[orange, noline]{Hilbert \(\Rightarrow\) Banach. }
+    Un espacio con producto interno, completo con la norma inducida es llamado \emph{espacio de Hilbert}. 
+\end{definition}
+\begin{example}
+    \(L_2\) e \(\ell_2\) son espacios de Hilbert. 
+\end{example}
+\- \\ 
+\- \vspace{-0.12in}  \todo[gris]{i. Desarme con producto interno y simplifique la suma} \todo[gris]{ii. Misma cosa} \todo[gris]{iii. Haga un ejercicio similar con los términos que incluyen \(iy\), junte los sumandos y simplifique }
+\begin{proposition}
+    Sea \(E\) espacio con producto interno, entonces \(\forall x, y \in E\) se cumplen  
+    \begin{enumerate}[label = \roman*., leftmargin = 1cm]
+        \item Ley del Paralelogramo \(\rightarrow \ \ \|x+y\|^2 + \|x-y\|^2 = 2 (\|x\|^2 + \|y\|^2)\).
+        \item Polarización (en \(\R\)) \( \rightarrow \ \ \langle  x, y \rangle = \frac{1}{4} (\|x+y\|^2 - \|x-y\|^2 )\).
+        \item Polarización (en \(\C\))  \(\rightarrow \ \  \langle  x, y \rangle = \text{ii.}+ \frac{i}{4}(\|x+iy\|^2 - \|x-iy\|^2).\) 
+    \end{enumerate}
+\end{proposition}
+
+\subsection{Ortogonalidad}
+
+\begin{definition}
+    Dos vectores \(x,y \in E\) espacio con producto interno, se dicen \emph{ortogonales} si \(\langle x, y \rangle =0 \), en cuyo caso denotamos \(x \perp y\). 
+\end{definition}
+
+\begin{lemma}[]
+    \textcolor{rojoscuro}{\underline{Exercise}} (Teorema de Pitágoras) Si \(x\perp y\), entonces \(\|x+y\|^2 = \|x\|^2 + \|y\|^2\). \textcolor{gray}{\(\rightarrow\) Es cosa de reescribir con producto interno, y ver los términos que se anulan } 
+\end{lemma}
+
+\- \todo[gris]{Aplique la \(\epsilon\)-propiedad al \(\inf\) planteado con \(\epsilon = \frac{1}{n}\), de esto \(\exists (y_n) \subseteq M\)} \todo[gris]{Use (i.) en los índices \(n,m\), desarrolle los términos apuntando a mostrar que \((y_n)\) es Cauchy e \(y_n \to p \in M\)} \todo[gris]{Para la unicidad suponga un \(q\in M\) que cumple lo mismo e use (i.) para argumentar \(\|p-q\| = 0 \)}
+\begin{theorem}
+    Sean \(E\) espacio con producto interno e \(M \leq E\) Banach. Entonces, \(\forall x \in E, \exists ! p \in M \) tal que \(\|x-p\| = \text{dist}(x,M)\). 
+\end{theorem}
+\- \vspace{0.54in}
+\begin{definition} \todo[orange, noline ]{La notación \(A^\perp \) puede parecer en conflicto con \(M^\perp\) del \emph{aniquilador} de \(M\), pero es la misma cosa}
+    Sea \(A\subset E\) espacio con producto interno, llamamos \emph{complemento ortogonal} de A al conjunto \( A ^\perp : \{y \in E: \forall x \in A, \  \langle x,y \rangle = 0 \}\). 
+\end{definition}
+
+\begin{lemma}
+    \textcolor{rojoscuro}{\underline{Exercise}} El complemento ortogonal verifica \((a) \  A \subseteq (A^\perp)^\perp  \), \( E^\perp  = \{0\}\) y \(\{0\}^\perp = E\); \((b) \ (A^\perp)\ce \leq E \); \((c) \ A \cap A^\perp = \{0\}\) si \( 0 \in A\), vacío en otro caso. \textcolor{gray}{\(\rightarrow \ (a)\) es directa; \((b)\) recuerde que el producto interno es continuo por coordenadas; \((c)\) solo describa el conjunto}
+\end{lemma}
+ 
+\-  \todo[gris]{(a) Tome \(p\) como en Teorema previo e muestre que \(x-p = q \in M^\perp\), tomando \(p + \lambda y \in M\) y desarrollando  
+\- \vspace{-0.2cm} 
+\[\|q\|^2 \leq \| x - (p+\lambda y )\|^2\]
+\- \vspace{-0.5cm} \\ 
+La unicidad es quasi inmediata 
+} \todo[gris]{(b) La primera parte es inmediata de (a), para desigualdad restante de las normas, recuerde que \(H \ni x = p + q \) donde \(p\perp q\), pitágoras hace el resto }
+\todo[gris]{(c) Es inmediato }
+\todo[red, noline]{Es preciso en (a) que \(M\) sea completo, piense en \([e_j] \leq \ell_2 \)}
+\begin{theorem}
+    Sean \(H\) Hilbert e \(M\ce \leq H\), entonces 
+    \begin{enumerate}[label = (\alph*), leftmargin = 1.1cm]
+        \item \(H = M \oplus M^\perp \), es decir, \(\forall x \in H\) existen únicos \(p \in M\) e \(q\in  M^\perp\), tales que  \(x = p+q\), más aún, \(\|x-p\| = \text{dist}(x,M)\). %\footnote{El vector \(p\) es llamado \emph{proyección ortogonal} de \(x\) en \(M\). }
+        \item \(P, Q: H \to H\) tales que \(P(x) = p\) e \(Q(x) = q \) son proyecciones, \(P(H)= M \) e \(Q(H) = M^\perp \). También \(\|P\|= \|Q\|=1\) si \(M < H\). %\footnote{El operador \(P\) es llamado \emph{proyección ortogonal} de \(H\) en \(M\). }
+        \item \(P \circ Q = Q \circ P = 0\). 
+    \end{enumerate}
+\end{theorem}
+\- \vspace{0.55cm}
+\begin{note}[Colorario]
+    En \(H\) Hilbert, todo \(M\ce < H\) no trivial es \(1\)-complementado. 
+\end{note}
+
+\subsection{Conjuntos Ortonormales en Espacios de Hilbert}
+
+\begin{definition}
+   Sea \(E\) espacio con producto interno.\todo[orange, noline]{Si \(S^\perp = \{0\}\), entonces es un \emph{sistema ortonormal completo}} Un conjunto \(S=\{x_i\}\subseteq E\) es un \emph{sistema ortonormal} si \(\forall i,j\) se tiene \(\langle x_i, x_j\rangle = \delta_{ij}\).  
+\end{definition}
+
+\begin{example}
+    \(\{e_j: j\leq n < \infty\}\subseteq \K^n\) es sistema ortonormal completo.  
+\end{example}
+\begin{example}
+    \(\{e_n: n\in \N\}\subseteq \ell_2 \) es sistema ortonormal completo. 
+\end{example}
+
+\-  \todo[gris]{(a) \(x = p+q \), represente \(p\) en la base de \(M\) y cálcule \(\langle x - p, x_j\rangle\)} \todo[gris]{(b) Desarme la expresión 
+\- \vspace{-0.2cm}
+\[\left\langle x - \sum \langle x, x_j\rangle x_j, x - \sum \langle x, x_j\rangle x_j\right\rangle\]
+\- \vspace{-0cm} } \todo[orange, noline]{Solemos referirnos a esa suma en (a) como la \emph{mejor aproximación} de \(x\in M\)}
+\begin{proposition}
+    Sea \(H\) Hilbert e \(\{x_1, \ldots, x_n\}\) sistema ortonormal finito de \(H\).
+    \begin{enumerate}[label = (\alph*)]
+        \item Si \(M = [x_1, \ldots, x_n]\) e \(x \in H\), entonces \(\left\|x - \overset{n}{\sum} \langle x, x_j \rangle x_j\right\|= \text{dist}(x,M)\). 
+        \item \(\forall x \in H\), se tiene \(\overset{n}{\sum} |\langle x, x_j\rangle|^2\leq \|x\|^2\).  
+    \end{enumerate}
+\end{proposition}
+
+\- \vspace{0.75cm} \\  
+\- \todo[gris]{ 
+\[J_k := \left\{j: |\langle x, x_j\rangle| > \frac{1}{k} \right\}\]
+Vea que es finito usando el item (b) de la proposición anterior
+}
+\begin{lemma}
+    Sean \(H\) Hilbert e \(S = \{x_i\}\) sistema ortonormal de \(H\). Entonces, \(\forall x \in H\setminus \{0\}\) el conjunto \(J = \{j : \langle x, x_j\rangle \neq 0\}\) es finito o contable. 
+\end{lemma}
+\- \vspace{-0.09in} \\
+\- \todo[gris]{Suponga que \(J\) es infinito contable, reordene los sumandos } \todo[gris]{Use el ítem (b) y haga \(n\to \infty\) de las sumas parciales }
+\begin{theorem}[Desigualdad de Bessel]
+    Sean \(H\) Hilbert, \(S= \{x_i\}\) un sistema ortonormal de \(H\) e \(J\) como en el lemma anterior. Entonces, \(\forall x\in H\), 
+    \[\sum |\langle x, x_j \rangle |^2\leq \|x\|^2.\] 
+\end{theorem}
+
+\begin{definition}
+    Sean \(E\) espacio normado e \((x_n) \subset E \). La serie \(\sum x_n < \infty \) sii 
+    \[\sum^N x_j = S_N\to x \in E \ \ \sim \ \ \sum x_n = x.\]  
+    Es \emph{incondicionalmente convegente} si para cualquier reordenamiento \(\sum x_{\sigma(n)}<\infty\). 
+\end{definition}
+\- \todo[gris]{Tome \(\varphi \in E^{'}\), y considere la serie de las imagenes, observe la igualdad de las imagenes por \(\varphi \) y aplique el penultimo colorario de Hahn-Banach}
+\begin{proposition}
+    Sean \(E\) espacio normado e \(\sum x_n \in E\) incondicionalmente convergente. Entonces, para cualesquiera reordenamientos \(\sigma_1, \sigma_2\), tenemos 
+    \[\sum x_{\sigma_1(n)} = \sum x_{\sigma_2(n)}. \] 
+\end{proposition}
+
+\- \todo[gris]{Tome \(\{y_j\}\) reordenación de \(J\) y defina 
+\- \vspace{-0.3cm} \[S_n= \sum^n \langle x, y_j\rangle y_j\] 
+\- \vspace{-0.4cm}\\ 
+ Use la desigualdad de Bessel para mostrar que es Cauchy}
+\begin{lemma}
+    Sean \(H\) Hilbert, \(S= \{x_i\}\) un sistema ortonormal de \(H\) e \(J\) como en el último lemma. Entonces, \(\forall x\in H\), la serie 
+    \[\sum \langle x, x_j\rangle x_j\]
+    es incondicionalmente convergente. 
+\end{lemma}
+
+\- \todo[gris]{(a) \(\Leftrightarrow \) (b) La ida es directa, para la vuelta tome la serie, un reordenamiento y muestre que 
+\- \vspace{-0.2cm}
+\[\left \langle x - \sum \langle x, x_{k_j}\rangle x_{k_j}, x_j \right \rangle  =0 \]
+\- \vspace{-0.4cm}} \todo[gris]{(b) \(\Rightarrow\) (c) Defina \(M = \overline{[S]}\), vea que pasa con los ortogonales y concluya que \(M\) solo puede ser todo \(H\) } \todo[gris]{(c) \(\Rightarrow\) (d) \(\Rightarrow\) (e) No admiten resumen, véase \cite[pág. 98]{botelho2025introduction}} \todo[gris]{(e) \(\Rightarrow\) (b) Tome \(x_0\in S^\perp\) e \(x= x_0 = y\) en la hipótesis}
+\begin{theorem}
+    Sean \(H\) Hilbert, \(S= \{x_i\}\) un sistema ortonormal de \(H\) e \(x,y\in H\), entonces los siguientes enunciados son equivalentes:
+    \begin{multicols}{2}
+    \begin{enumerate}[label = (\alph*)]
+        \item \(x= \sum \langle x, x_j \rangle x_j\).  
+        \item \(S^\perp = \{0\}\). 
+        \item \(\overline{[S]} = H\).  
+        \item \(\|x\|^2 = \sum |\langle x, x_j \rangle|^2\). \(\rightarrow \) Identidad de Parseval   
+        \item \(\langle x, y \rangle = \sum \langle x, x_j\rangle \overline{\langle y, x_j\rangle}\).    
+    \end{enumerate} 
+    \end{multicols}
+\end{theorem}
+\- \vspace{0.5cm}
+\subsection{Ortoganilización y Consecuencias}
+\- \todo[gris]{Igualita a la de Álgebra Lineal \\ 
+\- \vspace{-0.4cm}
+\[x_{n+1} = \left(\sum \langle x_{n+1}, e_j \rangle e_j \right)+ v_{n+1} \] 
+\- \vspace{-0.35cm}\\ 
+Donde \(v_{n+1} \in [e_1, \ldots, e_n]^\perp\), tome  \vspace{-0.15cm}
+\[e_{n+1} = \frac{x_{n+1}}{\|x_{n+1} \| }\]
+\- \vspace{-0.35cm}
+}
+\begin{proposition}[Ortogonalización de Gram-Schmidt]
+    Sea \((x_n)\) sucesión l.i. de vectores en \(E\) espacio con producto interno. Entonces, \(\exists (e_n)\) sucesión l.i. ortonormal tal que, 
+    \[[x_1, x_2, \ldots, x_n] =[e_1, e_2, \ldots, e_n].\] 
+\end{proposition}
+\- \vspace{0.5cm} \\ 
+% \begin{note}[Colorario]
+%     Sea \((x_n)\) sucesión l.i. de vectores en \(E\) espacio normado. Entonces, \(\exists (e_n)\) sucesión l.i. ortonormal tal que, 
+% \end{note}
+\- \todo[gris]{\((\Leftarrow) \) Es inmediata de la equivalencia (c)} \todo[gris]{\((\Rightarrow )\) Tome \(D\) enumerable e denso en \(H\), este tiene base infinita que se puede ortonormalizar y sigue siendo densa}
+\begin{theorem}
+    Sea \(H\) Hilbert tal que \(\dim(H) = \infty\). Entonces, \(H\) es separable sii \(\exists S = \{x_j\}\)  contable, tal que \(S\) es sistema ortonomal completo de \(H\).   
+\end{theorem}
+
+%\newpage 
+\- \todo[gris]{Existe un \(S= \{x_n\}\) sistema ortonormal completo contable de \(H\). Por Bessel sabemos que \((\langle x, x_n\rangle ) \in \ell_2\)} \todo[gris]{Tome \(T:H \ni x \mapsto (\langle  x, x_n\rangle ) \in \ell_2\)} \todo[gris]{Bien definida e Inyectividad, represente \(x\) en serie como en (a)} \todo[gris]{Isometría, Identidad de Parseval (d)} \todo[gris]{Sobreyectividad, para \((a_n) \in \ell_2\) plantee \(\sum a_jx_j<\infty\), luego defina \vspace{-0.3cm}
+\[S_N = \overset{N}{\sum}a_jx_j.\] 
+\- \vspace{-0.5cm}\\ 
+Use  Pitágoras para ver que \(S_n\) es Cauchy, finalmente concluya }
+\begin{theorem}[Riesz-Fischer]
+    Todo espacio de Hilbert infinito-dimesional separable es isometricamente isomorfo a \(\ell_2\). 
+\end{theorem}
+
+\- \vspace{4.2cm} 
+\begin{exercise}
+    Si \(E\) espacio normado es isomorfo a un espacio reflexivo, entonces \(E\) es reflexivo también.   
+\end{exercise}
+\begin{note}[Colorario]
+    Los espacios de Hilbert separables son reflexivos. 
+\end{note}
+\- \todo[gris]{Defina \(\mathcal{F}\) la familia de todos los sistemas ortonormales de \(H\) tales que \(\mathcal{F} \ni S_i \supseteq S_0\)} \todo[gris]{Plantee el orden contención y muestre que \(\bigcup S_i \in \mathcal{F}\) es cota superior} \todo[gris]{Use el Lemma de Zorn para garantizar que \(\exists S\) máximal de \(\mathcal{F}\) }\todo[gris]{Suponga que \(S\) no es completo y busque la contradicción (del máximal)}
+\begin{theorem}
+    Sean \(H\) espacio con producto interno e \(S_0\) sistema ortonormal de \(H\). Entonces, \(\exists S \supseteq S_0\) sistema ortonormal completo de \(H\).  
+\end{theorem}
+\- \vspace{1.7cm}
+\subsection{Funcionales Lineales y Teorema de Riesz-Fréchet }
+
+\begin{example}
+    Sean \(H\) Hilbert e \(\varphi_{y_0}: H \ni x \mapsto \langle x, y_0\rangle \), entonces el funcional \(\varphi_{y_0} \in H{'}\) e \(\|\varphi_{y_0}\|= \|y_0\|\). \textcolor{gray}{\(\rightarrow\) La continuidad la da Cauchy-Schwarz, para la igualdad de normas tome \(x= \frac{y_0}{\|y_0\|}\)} 
+\end{example}
+
+\- \todo[gris]{Suponga que \(\varphi \not\equiv 0 \), luego defina \(H> M\ce = \ker (\varphi)\)} \todo[gris]{Tome \(x_0 \in M^\perp\) tal que \(\|x_0\| = 1\) e
+\vspace{-0.25cm}
+ \[y_0:= \overline{\varphi(x_0)}x_0\] \- \vspace{-0.5cm} } \todo[gris]{Cálcule \(\langle x, y_0\rangle \) escribiendo \(x\) como \vspace{-0.2cm}
+ \[\left(x +\frac{\varphi(x)}{\varphi(x_0)}x_0\right) - \frac{\varphi(x)}{\varphi(x_0)}x_0\]
+ \- \vspace{-0.35cm} \\ } \todo[gris]{Cauchy-Schwarz completa la igualdad de normas, la unicidad es quasi-directa}
+\begin{theorem}[Riesz-Fréchet]
+    Sean \(H\) espacio de Hilbert e \(\varphi \in H{'}\). Entonces, \(\exists !y_0 \in H \) tal que \(\varphi(x) = \langle x, y_0\rangle \), más aún \(\|\varphi\| = \|y_0\|\). 
+\end{theorem}
+\- \vspace{3cm} 
+\begin{note}[Colorario]
+    Todo \(H\) Hilbert (sobre \(\R\)) es isométricamente isomorfo a \(H{'}\). \textcolor{gray}{\(\rightarrow\) Combine el Example e Teorema previos}
+\end{note}
+\begin{exercise}
+    Si \(H\) es Hilbert, entonces \(H \simeq H{'}\) isométricamente. \textcolor{gray}{\(\rightarrow \) pend.} 
+\end{exercise}
+\- \todo[gris]{Tome \(\varphi_1(x) = \langle x, y_1\rangle\) e \( \varphi_2(x)= \langle x, y_2 \rangle\in H{'}\), defina \vspace{-0.25cm}
+\[\langle \varphi_1, \varphi_2\rangle  := \langle y_2, y_1\rangle\] \- \vspace{-0.5cm}} 
+\begin{proposition}
+    Si \(H\) es Hilbert, entonces \(H{'}\) también es Hilbert. 
+\end{proposition}
+%\newpage 
+\- \todo[gris]{Use Riesz-Fréchet\(\times 3\) para desarmar el dual del dual y mostrar que en efecto para \(\Phi \in H{''}, \ \psi \in H{'}\),  \vspace{-0.25cm} 
+\[J_H(y)(\psi) = \Phi(\psi)\] \- \vspace{-0.5cm}}
+\begin{note}[Colorario]
+    Todo espacio de Hilbert es reflexivo. 
+\end{note}
+
+\- \vspace{0.1cm}
+\begin{definition}
+    Sean \(E \text{ e }F\) Banach. Una forma bilinieal \(T:E\times F\to \K\) es 
+    \begin{enumerate}[label=(\alph*)]
+        \item \emph{Coerciva} si \(E= F\), \(\K= \R\) e \(\exists \beta>0\), \(\forall x\in E \) tal que \(T(x,x)\geq \beta \|x\|^2\).  
+        \item \emph{Simetrica} si \(E=F\) e \(\forall x,y \in E\) se tiene \(T(x,y)= T(y,x)\). 
+        \item \emph{No degenerada} si \(\forall x \in E, \forall y \in F\) se tiene que \(T(x,y) = 0 \Rightarrow\) \(x=0\) o \(y=0\). 
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Las formas bilineales \(T_{1,2}: \ell_2 \times \ell_2 \to \K \) tales que 
+    \begin{itemize}
+        \item \(T_1: (a,b)\mapsto \sum a_jb_j \ \ \rightarrow \)  Símetrica, coerciva, continua y no degenerada. 
+        \item \(T_2: (a,b) \mapsto \sum_{} a_{2j}b_{2j}\ \ \rightarrow\) Símetrica, continua, no coerciva y degenerada.  
+    \end{itemize}
+\end{example}
+\- \todo[gris]{\(T\) es define un producto interno en \(H\)} \todo[gris]{Vea que \((x_n)\) Cauchy en \(\|\cdot \|_T\) \(\Rightarrow\) Cauchy en \( \|\cdot\|\), y van al mismo límite} \todo[gris]{Aplique Riesz-Fréchet }
+\begin{proposition}
+    Sean \(H\) Hilbert sobre \(\R\) e \(T:H\times H\to \R\) forma bilineal, símetrica, continua y coerciva. Entonces, \(\forall \varphi'\in H{'}, \exists !\ x_0 \in H\) tal que \(\forall x \in H\) se tiene \(\varphi(x) = T(x,x_0)\). 
+\end{proposition}
+\- \vspace{0.3cm}\\ 
+\- \todo[gris]{\(\forall x \in H, \ T_x: y \mapsto T(y,x) \in H{'}\), por Riesz-Fréchet \(T_x(y) = \langle y, w_x\rangle\)} \todo[gris]{Pruebe que \(A: x \mapsto w_x \in \Li(H,H)\), e use coercividad para ver que es un isomorfismo en su imagen } \todo[gris]{Vea que \(\text{Ran(A)} = G\ce \leq H\) y muestre que \(G^\perp = \{0\}\)} \todo[gris]{Aplique Riesz-Fréchet y complete el argumento, \(\exists x_0\) tal que \(\varphi(x) = \langle x, A(x_0)\rangle = \langle x, w_o\rangle = T(x,x_0)\)}
+\begin{theorem}[Lax-Milgram]
+    Sean \(H\) Hilbert sobre \(\R \) e \(T:H\times H\to \R\) forma bilineal continua y coerciva. Entonces, \(\forall \varphi \in H{'}, \exists ! x_0 \in H \) tal que \(\varphi(x)= T(x, x_0) \). 
+\end{theorem}
+\- \vspace{2.9cm}\\  
+\- \todo[gris]{Defina \(A:E\to F{'}\) tal que \(A(x)(y) = T(x,y)\), inyectiva e continua } \todo[gris]{\((\Rightarrow)\) Admita la representación, aplique Teorema de la Aplicación Abierta} \todo[gris]{\((\Leftarrow )\) Suponga que \(A:E \not\twoheadrightarrow F{'}\), Hahn-Banach y la reflexividad para buscar la contradicción}
+\begin{theorem}[Lax-Milgram (Versión Banach)]
+    Sean \(E\) e \(F\) Banach, con \(F\) reflexivo. Sea \(T:E\times F \to \K \) forma bilineal continua no degenerada. Entonces \(\forall \varphi \in F{'}, \exists  !\ x_0 \in E\) tal que \(\varphi(y)= T(x_0, y )\) sii  \(\exists \beta >0, \forall x \in E\) tal que \(\displaystyle\sup_{\|y\|=1} |T(x,y)|\geq \beta \|x\|\). 
+\end{theorem}
+\- \\ 

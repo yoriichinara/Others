@@ -1,0 +1,160 @@
+\section{Weak Topology}
+
+%\begin{note}
+%    En adelante entendemos \((X, \tau)\) como espacio topológico. 
+%\end{note}
+\subsection{Topología Generada por una Familia de Funciones}
+
+\begin{definition}%[Weak Topology]
+    Sean \(X\neq \emptyset\), \((Y_i, \tau_i)\) familia de espacios topológicos e \((f_i)\) familia de funciones \(f_i: X \to Y_i\). Llamamos \emph{weak topology} (sobre \(X\)) a la generada por,    
+    \[\Phi := \left\{ \bigcap f_j^{-1}(A_j): A_j\ab\subseteq Y_j\right\},\]
+    a la cual denotamos en adelante \(\tau_w\), topología generada por las \((f_i)\).   
+\end{definition}
+
+\begin{definition}
+    Sea \(E\) espacio normado. Denotamos \((E,\sigma(E,E{'}))= (E,\tau_w)\) al espacio \(E\) con la weak topology generada por \((\varphi_i) = E{'}\).  
+\end{definition}
+\begin{note}
+    Si \((x_n)\subseteq E\) converge en \(\tau_w\), escribimos \(x_n \overset{w}{\longrightarrow} x\).
+\end{note}
+\- \todo[gris]{(a), (c) y (e) son inmediatos de resultados básicos de topología} \todo[gris]{(b) Tome \(U\ab\subseteq \tau_w\) y planteelo como intersección finita de preimágenes} \todo[gris]{(d) Recuerde que \(E{'}\) separa puntos, e \(\K\) es Hausdorff}
+\begin{proposition}
+    Sea \(E\) espacio normado. Entonces,  
+    \begin{enumerate}[label = (\alph*)]
+        \item \(\forall \varphi \in E{'}\), \(\varphi: (E,\tau_w) \to \K \) es continua. 
+        %\item Si \(\Im:=\{\tau : \forall i \in I, \ f_i \text{ es continua en } (X,\tau)\} \), entonces \(\tau_w = \bigcap \Im \). 
+        \item \(\forall x_0 \in E\), los conjuntos de la forma \(B_{J,\epsilon} = \{ x\in E : |\varphi_j(x) - \varphi_j(x_0)|< \epsilon\}\) forman una base de vecindades \(\mathcal{B}_{x_0}\) en \(\tau_w\). 
+        %\item Sea \((x_\lambda)\subseteq X \) una red. Entonces, \(x_\lambda \to x \) en \((X, \tau) \) sii \(\forall i \in I\) se tiene \(f_i(x_\lambda )\to f_i(x)\) en \((Y_i,\tau_i)\).  
+        \item \(x_n \overset{w}{\longrightarrow} x \) sii \(\forall \varphi \in E{'}\), \(\varphi(x_n )\to \varphi(x)\).  
+        \item \((E, \tau_w)\) es Hausdorff. 
+        \item \(f: (Z, \tau) \to (E, \tau_w)\) es continua sii \(\forall \varphi \in E{'} \), \(\varphi \circ f: Z \to \K\) es continua.
+        %\item Si \(\forall i \in I\), \(Y_i\) es Hausdorff, entonces \((X,\tau_w)\) es Hausdorff sii la familia de funciones \((f_i)\) separa puntos.
+    \end{enumerate}
+\end{proposition}
+\- \todo[gris]{\(\varphi \in E{'}\) continua \(+\) ítem (c)}
+\begin{note}[Colorario]
+    En \(E\) espacio normado, si \(x_n\to x \), entonces \(x_n \overset{w}{\longrightarrow} x\). 
+\end{note}
+
+\begin{example}
+    Para \((e_n) \subseteq c_0\)\todo[red, noline]{\hspace{1cm}\(x_n \overset{w}{\longrightarrow} x\) \textcolor{red}{\(\nRightarrow\)} \(x_n \to x \)} tenemos \(e_n \overset{w}{\longrightarrow} 0 \) mientras en \(\tau_{\|\cdot\|}\) ni siquiera es Cauchy. \textcolor{gray}{\(\rightarrow \) Tome \(\varphi \in (c_0){'}\) e use la dualidad \(+\) ítem (c) para ver que \(\varphi(e_n) \to 0=\varphi(0)\)}%\(\exists a_n \in \ell_1\) tal que \(\varphi(b_n) = \sum a_jb_j\). \(e_n \overset{w}{\longrightarrow} 0\) }
+\end{example}
+
+\begin{proposition}
+    Sean \(E\) espacio normado e \(x_n \overset{w}{\longrightarrow} x\). Entonces, \\ 
+    \- \hspace{0.95cm}\todo[gris]{(a) Por el ítem (c) previo \((\varphi(x_n))\) es acotada en \( E{'} \Rightarrow (x_n)\) acotada en \(E\)} \todo[gris]{Note que \(|\varphi(x)| \leq \|\varphi\|\liminf \|x_n\|\), luego aplique colorario de H-B}
+    \begin{enumerate}[label = (\alph*)]
+        \item \vspace{-0.1cm}\((\|x_n\|) \) es acotada, y \(\|x\|\leq \liminf \|x_n\| \).
+        \begin{exercise}[4.5.12]
+            Sean \(E\) espacio normado e \(B\subseteq E \). Si \(\forall \varphi \in E{'}\), \(\varphi(B)\) es acotado, entonces \(B\) es acotado también. 
+        \end{exercise}
+        \- \vspace{-0.6cm} \\ 
+        \- \todo[gris]{Amarre \(|\varphi_n(x_n) - \varphi(x)|\) a \(\epsilon\) usando las convergencias y el ítem previo }
+        \item\vspace{-0.1cm} Si \(\varphi_n\to \varphi \in E{'}\), entonces \(\varphi_n(x_n) \to \varphi(x)\). 
+    \end{enumerate} 
+\end{proposition} 
+\- \todo[gris]{La primera afirmación es un facto topológico, \(\nexists \ \tau \subset \tau_w\) que haga todas las \((f_i)\) continuas en \((X, \tau )\)}  \todo[gris]{No admite resumen, véase \cite[pág. 121]{botelho2025introduction}}
+\begin{proposition}
+    Si \(E\) es espacio normado entonces \(\tau_w \subseteq \tau_{\|\cdot\|}\), con igualdad sii \(\dim E < \infty\). 
+\end{proposition}
+\- 
+\begin{note}[Colorario]
+    Si \(E\) es espacio normado, entonces \(E{'} = (E, \tau_w){'}\). 
+\end{note}
+
+\- \todo[gris]{Tome una red \((x_\lambda, f(x_\lambda)) \to (x,y) \in X \times Y\), use la continuidad de las proyecciones y del luego la de \(f\)}
+\begin{lemma}
+    Sea \(f: (X,\tau) \to (Y,\tau{'})\) continua. Si \((Y, \tau{'})\) es Hausdorff entonces \(\operatorname{graf}(f)\ce\subseteq X\times Y\) con la topología producto.   
+\end{lemma}
+
+\- \todo[gris]{\((\Rightarrow)\) \(\forall \varphi \in F{'}\), \(\varphi \circ T_\sigma \in (E, \tau_w^E){'}\) } \todo[gris]{\((\Leftarrow )\) Por el lemma anterior \(\operatorname{graf}(T_\sigma)\ce\) en \((E,\tau_w^E)\times (F, \tau_w^F) \subseteq (E\times F, \tau_{\|\cdot\|})\), se sigue de Teorema del Gráfico Cerrado}
+\begin{proposition}
+    Sean \(E\) e \(F\) Banach. Un operador lineal \(T: E \to F\) es continuo sii \(T_\sigma:(E, \tau_w^E) \to (F,\tau_w^F)\) es continuo. 
+\end{proposition}
+\- \vspace{-0.3cm}
+%\begin{note}
+%    Vale para \(E\) normado en general pero la demostración es un poco más elaborada. 
+%\end{note}
+\- \vspace{0.3cm } \\ 
+\- \todo[gris]{\((\subseteq )\)  Es inmediato de la "preservación" de convergencia en sucesiones} \todo[gris]{\((\supseteq )\) Sea \(x_0 \in \overline{K}^{ \ \tau_{w}} \setminus \overline{K}^{ \ \tau_{\|\cdot\|}}\), consiga aplicar versión geométrica H-B (estricta) y busque la contradicción} %\todo[gris]{\((\supseteq)\) \((\K = \C)\) Análogo}
+\begin{theorem}[Mazur]
+    Sean \(E\) espacio normado e \(K\subseteq E \) convexo. Entonces \(\overline{K}^{ \ \tau_{\|\cdot\|}} = \overline{K}^{ \ \tau_w}\). En particular, \(K\ce \subseteq (E, \tau_{\|\cdot\|})\) sii \(K\ce \subseteq (E, \tau_{w})\). 
+    \begin{exercise}[1.8.19]
+        \(K\subseteq E\) es convexo \(\Rightarrow \overline{K}\) convexo.  
+    \end{exercise}
+\end{theorem}
+
+\- \todo[gris]{No admite resumén, véase \cite[pág. 124]{botelho2025introduction}}
+\begin{theorem}[Schur]
+    Sea \((x_n) \subseteq \ell_1\). Entonces \(x_n \to x \) sii \(x_n \overset{w}{\longrightarrow} x\). 
+\end{theorem}
+
+\subsection{Weak-Star Topology}
+
+\begin{definition}
+    Sea \(E\) espacio normado la \emph{weak-star topology} definida en \(E{'}\) y a la cual denotamos \(\sigma(E{'}, E) = (E{'},\tau_{w^*} )\) es la generada por la familia \(J_E(E)\subseteq E{''}\). 
+    %\[\forall x\in E, \ \forall \varphi \in E{'}, \ J_E(x):  \varphi \mapsto \varphi(x) \in \K. \] 
+\end{definition}
+
+\begin{note}
+    Análogamente, cuando \((\varphi_n) \subseteq E{'}\) converge en \(\tau_{w^*}\), escribimos \(\varphi_n \overset{w^*}{\longrightarrow}\varphi \). 
+\end{note}
+
+\- \todo[gris]{(a), (c) y (e) de nuevo son consecuencias de resultados topológicos}
+\todo[gris]{(b) Es una adaptación de su análogo}
+\todo[gris]{(d) \(J_E(E)\) separa puntos también, veáse Exercise 4.5.11}
+\begin{proposition}
+    Sea \(E\) espacio normado. Entonces, %\(\tau_{w^*}\),  
+    \begin{enumerate}[label = (\alph*)]
+        \item \(\forall x \in E\), \(J_E(x): (E{'},\tau_{w^*}) \to \K \) es continua. 
+        %\item Si \(\Im:=\{\tau : \forall i \in I, \ f_i \text{ es continua en } (X,\tau)\} \), entonces \(\tau_w = \bigcap \Im \). 
+        \item \(\forall \varphi_0 \in E{'}\), los conjuntos de la forma \(B_{J,\epsilon} = \{\varphi \in E{'} : |\varphi_j(x_j) - \varphi_0(x_j)|< \epsilon\}\) forman una base de vecindades \(\mathcal{B}_{\varphi_0}\) en \(\tau_{w^*}\). 
+        %\item Sea \((x_\lambda)\subseteq X \) una red. Entonces, \(x_\lambda \to x \) en \((X, \tau) \) sii \(\forall i \in I\) se tiene \(f_i(x_\lambda )\to f_i(x)\) en \((Y_i,\tau_i)\).  
+        \item \(\varphi_n \overset{w^*}{\longrightarrow} \varphi \) sii \(\forall x \in E\), \(\varphi_n(x )\to \varphi(x)\).  
+        \item \((E{'}, \tau_{w^*})\) es Hausdorff. 
+        \item {\(f: (Z, \tau) \to (E{'}, \tau_{w^*})\)} es continua sii {\small\(\forall x \in E, \ J_E(x) \circ f: Z \to \K\)} es continua. 
+        %\item Si \(\forall i \in I\), \(Y_i\) es Hausdorff, entonces \((X,\tau_w)\) es Hausdorff sii la familia de funciones \((f_i)\) separa puntos.
+    \end{enumerate}
+\end{proposition}
+\begin{example}
+    Sea \((e_n)\subseteq \ell_1 = (c_0){{'}}\). Dada \(x = (x_n) \in c_0\), entonces \(e_n ( x) = x_n \to 0 \), luego por el ítem (c) \(e_n \overset{w^*}{\longrightarrow } 0\). 
+\end{example}
+\- \todo[gris]{Todos los ítems son adaptaciones de resultados anteriores}
+\begin{proposition}
+    Sea \(E\) espacio normado. Entonces, 
+    \begin{enumerate}[label = (\alph*)]
+        \item Si \(\varphi_n \overset{w}{\longrightarrow } \varphi\) entonces \(\varphi_n \overset{w^*}{\longrightarrow } \varphi\). 
+        \item Si \(E\) es Banach e \(\varphi_n \overset{w^*}{\longrightarrow } \varphi \) entonces \(\left(\|\varphi_n\|\right)\) es acotada y \(\|\varphi\| \leq \liminf \|\varphi_n\|\). 
+        \item Si \(E\) es Banach, \(\varphi_n\overset{w^*}{\longrightarrow } \varphi\) e \(x_n \to x \in E \), entonces \(\varphi_n(x_n) \to \varphi(x) \in \K\). 
+    \end{enumerate}
+\end{proposition}
+
+\- \todo[gris]{Tome \(T: V \ni x \mapsto (\varphi_j(x))\in \K^n\)}
+\- \todo[gris]{Haga \(U: T(V) \ni x\to \varphi(x) \in \K \), vea que está bien definida, planteé una extensión y concluya }
+\begin{lemma}
+    Sean \(V\) espacio vectorial e \(\varphi_j \in V{'}\) tales que \(\bigcap \ker \varphi_j \subseteq \ker \varphi\), entonces \(\exists a_j\in \K \) tales que \(\varphi = \sum a_j \varphi_j\). 
+\end{lemma}
+\- \vspace{0.2cm}\\ 
+\- \todo[gris]{Tome \(f \in (E{'}, \tau_{w^*})\), entonces \(f(0)= 0\), luego \(\exists B_{J, \epsilon }\) donde \(|f(\varphi)|<1\) \vspace{-0.2cm}
+\[B_{J, \epsilon } = \{\varphi \in E{'}: |\varphi(x_j)|< \epsilon \}\] \- \vspace{-0.5cm}} 
+\todo[gris]{Suponga que \(\forall j, \ J_E(x_j)(\varphi) = 0 \), apunte a mostrar que \(f(\varphi )= 0\), \vspace{-0.2cm}
+\[\bigcap \ker (J_E(x_j)) \subseteq \ker f \]\- \vspace{-0.5cm} \\ 
+Aplique el lemma y concluya }
+\begin{proposition}
+    Si \(E\) es espacio normado entonces \((E{'},\tau_{w^*}){'} = J_E(E)\). 
+\end{proposition}
+
+\begin{note}[Colorario]
+    Si \(E\) es espacio normado, entonces \((E{''},\tau_{w^*}){'} = J_{E{'}}(E{'})\)
+\end{note}
+\- \vspace{1.8cm}
+
+\- \todo[gris]{Recuerde que \(J_E(E)\subseteq E{''}\)}
+\begin{proposition}
+    Sea \(E\) espacio normado. Entonces, \((E{'},\tau_{w^*})\subseteq (E{'}, \tau_w)\), más aún, coinciden sii \(E\) es reflexivo. 
+\end{proposition}
+
+\- \todo[gris]{No admite resumen, veáse \cite[pág. 129]{botelho2025introduction}}
+\begin{theorem}[Banach-Alaoglu-Bourbaki]
+    Sea \(E\) espacio normado, entonces la bola \(B_{E{'}}\) es compacta en \(\subseteq (E{'}, \tau_{w^*})\). 
+\end{theorem}

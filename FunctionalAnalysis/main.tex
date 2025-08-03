@@ -1,0 +1,183 @@
+% PROGRAMA DE PÓS-GRADUAÇÃO EM ECONOMIA APLICADA
+% UNIVERSIDADE FEDERAL DO RIO GRANDE - FURG
+
+% ===========================================================
+
+\documentclass[a4paper, 11pt]{extarticle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PACOTES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[margin =0.5in, bottom = 2in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor} 
+\usepackage{enumitem} 
+\usepackage{lipsum}	 
+\usepackage{amsfonts,amsmath,amssymb, amsthm} 
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{layout}
+\usepackage{pifont, todonotes}
+% Configuração da Fonte
+\usepackage{times} % Fonte: Times New Roman
+\usepackage{layout}
+\usepackage{multicol}
+
+% PACOTES ESSENCIAIS
+\usepackage{caption}  
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries} % formato de la fuente
+  {\S \hspace{-0cm} \thesection}              % etiqueta de la sección (con símbolo ♦)
+  {0.5em}                        % espacio entre el número y el título
+  {}                           % código antes del título
+
+%\setlength{\footskip}{0pt} % Espacio entre texto y pie de página
+\renewcommand{\footnoterule}{\vspace{5pt}\hrule width 0.3\linewidth\vspace{5pt}}
+\setlength{\textheight}{750pt}
+\setlength{\textwidth}{370pt}
+%\setlength{\footskip}{25pt}
+\setlength{\marginparwidth}{145pt}
+\setlength{\marginparsep}{12pt}
+\setlength{\headsep}{10pt}
+\setlength{\topmargin}{-60pt}
+\definecolor{verdeoscuro}{RGB}{0,100,0} % Un verde bastante oscuro
+\definecolor{rojoscuro}{RGB}{139,0,0} % rojo oscuro tipo "DarkRed"
+
+\setlength{\parindent}{0pt}
+
+\todostyle{orange}{
+    linecolor=orange,        % Flecha negra
+    bordercolor=orange,      % Borde negro
+    textcolor=black!90,      % Borde negro
+    backgroundcolor=white!33,  % Sin relleno de color
+    size=\scriptsize           % Tamaño de texto
+}
+\todostyle{green}{
+    linecolor=verdeoscuro,        % Flecha negra
+    bordercolor=verdeoscuro,      % Borde negro
+    textcolor=black!90,      % Borde negro
+    backgroundcolor=white!33,  % Sin relleno de color
+    size=\scriptsize           % Tamaño de texto
+}
+\todostyle{red}{
+    linecolor=red,        % Flecha negra
+    bordercolor=red,      % Borde negro
+    textcolor=black!90,      % Borde negro
+    backgroundcolor=white!33,  % Sin relleno de color
+    size=\scriptsize           % Tamaño de texto
+}
+\todostyle{red2}{
+  linecolor=rojoscuro,        % Flecha negra
+  bordercolor=rojoscuro,      % Borde negro
+  textcolor=black!90,      % Borde negro
+  backgroundcolor=white!33,  % Sin relleno de color
+  size=\scriptsize           % Tamaño de texto
+}
+\todostyle{gris}{
+  linecolor=gray,        % Flecha negra
+  bordercolor=gray,      % Borde negro
+  textcolor=black!90,      % Borde negro
+  backgroundcolor=white!33,  % Sin relleno de color
+  size=\scriptsize           % Tamaño de texto
+}
+
+\begin{document} %Início do Documento
+%\layout
+%\newpage 
+\- \vspace{-0.3in}
+\par\noindent\includegraphics[width = 1.42\textwidth]{Imagens/Header.png}
+
+%%%%%%%%%%%%%%%%%%%%%%%% CONFIG. DO TÍTULO %%%%%%%%%%%%%%%%%%%%%%%%
+%%\vspace{n}
+
+\begin{center} %Inicia a centralização
+{ \hspace{5.7cm}\Large\textbf{Functional Analysis\ \ | \ \  2025-I}} \vspace{0.1in}   \\ {\small
+\hspace{5.7cm}Nestor Heli Aponte Avila\(^1\) \\ 
+\hspace{5.7cm}\href{mailto:n267452@dac.unicamp.br}{\url{n267452@dac.unicamp.br}}} %\\
+%Prof. Piper Pimienta \\
+%\href{mailto:pipe@dac.unicamp.br}{\url{pipe@dac.unicamp.br}}}
+
+\end{center} %Finaliza a centralização
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PREAMBULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\renewcommand\@makefnmark{%
+  \hbox{\@textsuperscript{\color{magenta}\normalfont\@thefnmark}}}
+\renewcommand\@makefntext[1]{%
+  \noindent\makebox[1.8em][r]{\textsuperscript{\color{magenta}\@thefnmark}}#1}
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{definition}{\rotatebox{45}{\large \(\square\)}}[section]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{{\scriptsize \(\square\)}}[section]
+\newtheorem{proposition}{{\large \(\square\)}}[section]
+\newtheorem{theorem}{{\large \(\blacksquare\)}}[section]
+
+\makeatletter
+% Eliminar la puntuación del estilo 'plain' y 'definition'
+\def\@thm@headpunct{} % Elimina el punto de los títulos de los teoremas
+
+% Modificar el estilo de 'plain' y 'definition'
+\def\th@plain{%
+  %\thm@headfont{\normalfont\bfseries} % Mantener la fuente normal, sin negrita
+  %\thm@notefont{\normalfont} % El texto de la nota (si la hay) no será en negrita
+  \thm@headpunct{} % Sin puntuación adicional
+}
+
+\def\th@definition{%
+  %\thm@headfont{\normalfont\bfseries} % Fuente normal para el título
+  %\thm@notefont{\normalfont} % El texto de la nota (si la hay) no será en negrita
+  \thm@headpunct{} % Sin puntuación adicional
+}
+
+\def\th@remark{%
+  %\thm@headfont{\normalfont\bfseries} % Fuente normal para el título
+  %\thm@notefont{\normalfont} % El texto de la nota (si la hay) no será en negrita
+  \thm@headpunct{} % Sin puntuación adicional
+}
+\makeatother
+
+\definecolor{verdeoscuro}{RGB}{0,100,0} % Un verde bastante oscuro
+\definecolor{rojoscuro}{RGB}{139,0,0} % rojo oscuro tipo "DarkRed"
+
+\theoremstyle{remark}
+\newtheorem*{example}{\textcolor{verdeoscuro}{\underline{{Example}}}}
+\newtheorem*{exercise}{\textcolor{rojoscuro}{\underline{{Exercise}}}}
+\newtheorem*{note}{\(*\)}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Li}{\mathcal{L}}
+\newcommand{\Ei}{}
+\newcommand{\Ef}{}
+\newcommand{\ab}{^{\text{\ding{71}}}}
+\newcommand{\ce}{^{\text{\ding{70}}}}
+\newcommand{\dual}[1]{{\textcolor{red}{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% REFERÊNCIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{sections/1banach.tex}
+%\input{sections/2oper.tex}
+%\input{sections/3hahn-banach.tex}
+\input{sections/4dualidad.tex}
+\input{sections/5hilbert.tex}
+\input{sections/6WTop.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% REFERÊNCIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{9}
+
+\bibitem{botelho2025introduction}
+Botelho, Geraldo and Pellegrino, Daniel and Teixeira, Eduardo. \textit{Introduction to Functional Analysis}, Springer, 2025.
+
+\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% APÊNDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
