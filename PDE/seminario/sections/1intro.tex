@@ -1,0 +1,169 @@
+\subsection*{O modelo}
+
+\parbox{0.65\textwidth}{
+Supõe que temos uma particula no origem da reta que cujo movemento obedece as seguintes reglas:  
+
+\begin{enumerate} 
+    \item[(R1)] Se move ao paso \(h>0\) por unidade de tempo \(\tau\). 
+    \item[(R2)] O paso pode ser a esquerda ou direita com mesma probabilidade \(\rho = 1/2\) que não depende dos pasos anteriores. 
+\end{enumerate} }
+
+\begin{tikzpicture}[overlay, scale = 1, shift= {(11.5cm, 1.4cm)}]
+    \draw[<->, thick] (1,0) --  (5,0) node[right, yshift = 0.4cm] {$\R$};
+    \draw[gray, dashed ] (2,0) --  (2,2) node[left, xshift = 0cm] {$t$};
+    \draw[gray, dashed ] (4,0) --  (4,2) node[right, xshift = 0cm] {\(t + \tau\)};
+    \filldraw[gray] (2,0) circle (2pt) node[below, xshift= 0cm, yshift = -0.2cm] {\textcolor{black}{$x$}}; 
+    \filldraw (4,0) circle (2pt) node[below, xshift= 0cm, yshift = -0.2cm] {$x+h$}; 
+    \draw[->] (2.2,0.3) arc (160:20:0.8cm) node[midway, xshift= 0cm, yshift = 0.5cm] {$1/2$}; 
+\end{tikzpicture}
+
+
+\vspace{-0.75cm}A tarea se torna então encontrar uma função \(\rho(x,t)\) que dei a probabilidade de encontrar à particula na posição \(x\) num instante \(t = N \tau \).  
+
+\subsection*{Contas preliminares}
+
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\begin{itemize}[label = \(\rightarrow\) \ ]
+    \item Suponha que após de \(N\) passos, \(t = N\tau\), a particula tá em \(x = mh\), pra algúm  \(m \in \mathbb{Z}: m \leq |N|\). 
+    \item Sejam \(k := \#\) de pasos dados a direita e \(N-k\) os dados a esquerda.  
+    \item[\(\downarrow\) \ ] Temos então \(m = k - (N-k) = 2k -N\) e \(k = (m+N)\cdot 2^{-1} \). Assim, podemos pensar na probabilidade em termos de \(k\):  
+    \[\rho(x,t) = \rho_k = \frac{\# \text{ $N$-caminos com $k$ pasos a direita}}{ \# \text{ $N$-caminos totais}} = \binom{N}{k}\cdot 2^{-N}.\] 
+    \item Na procura de um modelo continuo, precisamos fazer \(h, \tau \to 0\), no entanto temos que respeitar parâmetros clave pra não colapsar o modelo, neste caso são o primeiro e o segundo momento:   
+    \begin{equation} \label{eq:1}
+        \begin{cases}
+        \esp[x] = \esp[mh] = \esp[m]h \\ 
+        \esp[x^2] = \esp[(mh)^2] = \esp[m^2] h^2  
+    \end{cases}. \footnote{Queremos variança \(\operatorname{Var}(x) = \sigma^2 = \esp[x^2]-\esp[x]^2\) (distancia promedio do origen) constante.}\end{equation}
+    \item[\(\downarrow\) \ ] A esperanza é linear e \(m = 2k - N \), então é suficiente com determinar \(\esp[k]\) e \(\esp[k^2]\). 
+\end{itemize}
+\newpage
+\- \hrule  
+
+\begin{definition}
+    Sejam \(X\) variable aleatoria discreta tomando valores em \(\mathbb{Z}_{\geq 0}\) e \(\rho_{_X}\) sua função masa de probabilidade. A função geradora de probabilidade é 
+    \[G(s) := \esp[s^X] = \sum_{x=1}^N \rho_{_X}(x)\cdot s^x.\]
+\end{definition}
+
+\hypertarget{prop1}{}
+\begin{proposition}
+    \textbf{1.} Nas hipotese anteriores, \(\esp[X(X-1) \cdots (X-r+1)] = G^{(r)}(1)\). 
+\end{proposition}
+\- \hrule 
+
+
+\begin{itemize}[label = \(\rightarrow\) \ ]
+    \item[\(\downarrow\) \ ] Temos hipotese pra usar \(\square\) \hyperlink{prop1}{1.}, só precisamos das derivaradas, 
+    {\small 
+    \[
+        G(s) = \frac{1}{2^N} \sum^N \rho_k s^{k} = \left(\frac{1+s}{2}\right)^N\Rightarrow \ G^{(1)}(1) = \frac{N}{2}, \ G^{(2)}(1) = \frac{N(N-1)}{4}. 
+    \] }
+    \[\begin{cases}
+        \esp[k] = G^{(1)} = \frac{N}{2} \\ 
+        \esp[k^2] = G^{(2)}(1) - G^{(1)}(1) = \frac{N(N+1)}{4}
+    \end{cases}\]
+    \item[\(\downarrow\) \ ] Voltando a (\ref{eq:1}) temos \(\esp[x] = \esp[2k -N] = 2\esp[k] - N = 0\) e \(\esp[x^2]= \sigma[x]^2 = \esp[4k^2 - 4k +N^2] = \esp[k^2]- 4 \esp[k] + N^2 = N\). \footnote{Não é estranho que \(\esp[x]=0\), pois é apenas natural num sistema simétrico "justo".}    
+    \item[\(\downarrow\) \ ] Surgio então a condição \(\sigma^2 =  Nh^2\), lembrando que \(N = t/\tau\), tá nós dizendo que temos dilatação parabolica do espaço-tempo, 
+        \begin{equation} \label{eq:-1} \sigma^2 = \frac{h^2}{\tau} \cdot t \ \sim \ \rho(x,t) = \rho(\lambda x, \lambda^2 t). \end{equation} 
+    Aquela é justamente uma das primeiras condições na procura da solução fundamental da equação do calor vista em aula.  
+\end{itemize}
+
+\subsection*{Procura do límite}
+
+\- \hrule
+\hypertarget{prop2}{}
+\begin{definition}
+    Seja \((\Omega, \Im)\) espaço mensurável. Uma \emph{partição} é uma coleção de eventos \((B_i)\subset \Im\) tal que \(\forall i\neq j\), \(B_i \cap B_j = \emptyset\) e \(\bigcup B_i = \Omega\).
+\end{definition}
+\begin{theorem}[\emph{\textbf{P}robabilidade \textbf{T}otal}]
+    Sejam \((\Omega, \Im, P)\) espaço de probabilidade, \( (B_i) \subset \Im\) uma partição e \(A \in \Im\) qualquer. Então, \(P(A) = \sum P(A\mid B_i)\cdot P(B_i)\).\vspace{0.4cm}
+\end{theorem}
+\hrule
+\begin{itemize}[label = \(\rightarrow\) \ ]
+    \item Da independência no cada paso e do \(\blacksquare\) \hyperlink{prop2}{(\emph{PT})} temos, 
+    \begin{equation} \label{eq:2}
+        \begin{cases}\rho(x,t+\tau ) = \frac{1}{2}\rho(x-h,t) + \frac{1}{2}\rho(x+h, t) \\ 
+    \rho(x,0) = \begin{cases}
+        1, \ &\text{se } x = 0\\
+        0, \ &\text{se } x \neq 0
+    \end{cases}\end{cases}.\end{equation}
+    \demo{\- \centering\(B_{\pm}:= \{\text{Partícula em \(x\pm h\) no tempo \(t\)}\}\sim \rho(B_{\pm}) = \rho(x\pm h, t)\)}
+    \item Suponha que \(\rho(x,t)\) é suave em \(\R\times (0, \infty)\), função \emph{densidade} (continua) no lugar de função \emph{masa} (discreta), que tém límite trivial. 
+    \item[\(\downarrow\) \ ] Usando Taylor em \(t\), \(x\) e substituindo em (\ref{eq:2}) temos, 
+    \begin{align*}
+        \textcolor{gray}{\cancel{\rho(x,t)}} + \rho_t(x,t)\tau + \sigma |\tau| &=  \frac{1}{2}\left(\textcolor{gray}{\cancel{2\rho(x,t)}} + \textcolor{gray}{\bcancel{\rho_x(x,t)h}} - \textcolor{gray}{\bcancel{\rho_x(x,t)h}}+ 2 \cdot \frac{1}{2}\rho_{xx}(x,t)h^2 + \sigma|h^2|\right) \\ 
+        \rho_t + \sigma|1| &= \frac{1}{2}\frac{h^2}{\tau}\rho_{xx} + \sigma\left|\frac{h^2}{\tau}\right| 
+    \end{align*} 
+
+     %\rho_t(x,t)\tau + \sigma |\tau| = \textcolor{gray}{\cancel{\rho(x,t)}} + \frac{1}{2}\rho_{xx}(x,t)h^2 + \sigma|h^2|\) e multiplicando por \(1/\tau\), chegamos finalmente na expressão, 
+
+    Na nossa procura de límite não trivial precisamos que \(\lim_{(h,\tau)\to (0,0)}  h^2 / \tau \) seja constante, digamos \(2D\) pra algúm \(D>0\).
+    \item Fazendo \(h,\tau \to 0\) obtemos \(\rho_t -D\rho_{xx} = 0\), a equação do calor. Se \(D = 1\), como no \cite[Seç. 2.3]{evans} a gente sabe que temos solução única dada por, 
+    \[\rho(x,t) = \Phi (x,t) := \frac{1}{\sqrt{4\pi t}} \cdot \exp\left(-\frac{x^2}{4t} \right). \] 
+\end{itemize}
+    
+\subsection*{Interpretações importantes}
+
+No \cite[Cáp. 2]{SS} o autor considera desde o principio a constante que chamamos de \(D\) (\emph{coeficiente de difussão}), e consegui a solução fundamental,    
+\[\Gamma_{_D}(\x,t) := \frac{1}{\left( 4\pi D t\right)^{n/2}} \cdot \exp\left(- \frac{\|\x\|^2}{4Dt}\right).\]
+
+\begin{itemize}[label = \(\downarrow\) \ ]
+    \item Lembrando da equação (\ref{eq:-1}) a gente tinha \(\sigma^2 / t  = h^2 / \tau = 2D\), ou seja, difussão promedio de \(\sqrt{2D}\) por unidade de tempo. Também,  
+    %\item \(\displaystyle \frac{x^2}{Dt}\) é adimensional, além de invariante por dilatações parabólicas.  
+    \item \(\displaystyle \lim_{h\to 0} \ \frac{h}{\tau} = \lim_{h\to 0}\ \frac{2D}{h} \to \infty \equiv \text{Velocidade de propagação infinita.}\)  
+\end{itemize}  
+
+\subsection*{Brownian Motion $1$-dimensional}
+
+\- \hrule
+
+\begin{definition}
+    Sejam \((\Omega, \Im, P)\) espaço de probabilidade e \(X\) v.a. discreta tomando valores em \(\{x_j\}\subset \R\) enumerável. Então, \(\mathbb{E}[X] := \sum x_j \cdot P(X = x_j)\).
+\end{definition}
+
+\begin{definition}
+    Seja \((\Omega, \Im, P)\) espaço de probabilidade. Uma familia \((X_i)\) de variavéis aleatorias é \emph{independente} se \(\forall (B_{i_j}) \subset \mathcal{B}(\R), \ j\leq m \in \mathbb{Z}_{\geq 0}\), \(P(X_{i_1} \in B_{i_1}, \ldots, X_{i_m} \in B_{i_m}) = \prod^m P (X_{i_j} \in B_{i_j})\).  
+\end{definition}
+
+\hypertarget{thmTLC}{}
+\begin{theorem}[\emph{\textbf{T}eorema do \textbf{L}ímite \textbf{C}entral}]
+    Sejam \((\Omega, \Im, P)\) espaço de probabilidade e \((X_j)\) familia de v.a.i. e identicamente ditribuidas com \(\mathbb{E}[X_j] = \mu\) e \(\var[X_j] = \sigma^2 >0\). Então,  
+    \[\lim_{n\to \infty} \frac{\sum^n X_j- n\mu }{\sigma \sqrt{n}} = \mathcal{N}(0, 1). \]
+\end{theorem}
+\- \vspace{-0.3cm}\hrule 
+
+\begin{itemize}[label = \(\rightarrow\) \ ]
+    \item[\(\rightarrow\) \ ] Sejam \(x_j := \) posição após \(j\) passos e \(\forall j \in \N, \ h \xi_j := x_j - x_{j-1}\). A familia \((\xi_j)\) de v.a. é independente e idênticamente distribuída.  
+    \[\xi_j : (x_j) \to \{-1, 1\} \text{ com } \rho(\xi_j = \pm 1) = \frac{1}{2}. \]
+    Além disso, \(\mathbb{E}[\xi_j] = \mu = 0\) e \(\var[\xi_j] = \sigma^2 = 1 = \sigma\). %O desplaçamento da partícula após de \(N\) passos é:  
+    \demo{\begin{itemize}[label = ,left = -0.3cm]
+        \item \textbf{Independência.} Sejam \(l\leq k\in \N\), \((\xi_{j_l})\subset (\xi_j)\) e \((a_l) \in \{-1,1\}^k\),  
+        \- \vspace{-0.5cm}
+        \[\rho(\xi_{j_1} = a_1, \ldots, \xi_{j_k}= a_{k}) =2^{N-k}\cdot 2^{-N} = 2^{-k} = \prod^k \rho(\xi_{j_l} = a_l) \]
+        \item \textbf{Esperança.} \(\mathbb{E}[\xi_j] = (-1)\cdot \rho(\xi_j = -1) + (1)\cdot \rho(\xi_j = 1) = 0\). 
+        \item \textbf{Variança.} \(\var[\xi_j] =  \mathbb{E}[\xi_j^2] = (-1)^2\cdot \rho(\xi_j = -1) + (1)^2\cdot \rho(\xi_j = 1) =1\).
+    \end{itemize}}
+    \item[\(\downarrow\) \ ] Das nossas concluções anteriores pra \(D = h^2/\tau\), temos \(h = \sqrt{{2Dt}/{N}}\), logo, o desplaçamento da partícula após de \(N\) passos é 
+    \[x_{_N} = h \sum^N \xi_j = \sqrt{2Dt} \frac{1}{\sqrt{N}} \sum^N \xi_j. \] 
+    Segue do \(\blacksquare\) \hyperlink{thmTLC}{(\emph{TLC})} que \(x_{_N} \overset{\rho}{\longrightarrow} \mathcal{N}(0, 2Dt)\). %O random walk se tornou continuous walk, também conhecido como \emph{Brownian motion}.  
+\end{itemize}
+
+\- \hrule
+\begin{definition}
+    Seja \((\Omega, \Im, P)\) espaço de probabilidade. Um \emph{proceso estocástico} é uma familia \((X(t))\) de v.a., usualmente indexada pelo tempo, \(t \in [0,\infty)\). 
+\end{definition}
+\begin{definition}
+    O \emph{movimento browniano} é um proceso estocástico \((W(t))\) tal que:  
+    \begin{enumerate}[label = (B\arabic{enumi}), left = 1cm]
+        \item Começa no origem, \(W(0)= 0\). 
+        \item \(W : t \mapsto W(t, \omega)\) continua quasi-sempre.
+        \item Incrementos independentes, se \(0 \leq t_1 < t_2 < \cdots < t_n\), então a familia de v.a. \((W(t_j) - W(t_{j-1}))\) é independente.
+        \item Pra cada \(0 \leq s < t \), \(W(s) - W(t) \sim \mathcal{N}(0, t-s)\).  
+    \end{enumerate}    
+\end{definition}
+
+\- \vspace{-0.5cm}\hrule 
+
+\begin{itemize}[label = \(\downarrow\) \ ]
+    \item Fazendo \(D =1/2\), o feito até agora não é outra coisa que a construção do movimento browniano $1$-dimensional estándar como o límite de passeios aleatorios. 
+\end{itemize}
